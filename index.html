@@ -4,6 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to CineDocs</title>
+    <link rel="stylesheet" href="./main.css" />
+    <script type="text/javascript" src="./main.js"></script>
   </head>
-  <body></body>
+  <body>
+    <!-- 상단 메뉴 -->
+    <header>
+      <div class="leftMenu">
+        <h1>cineDocs</h1>
+      </div>
+      <div class="rightMenu">
+        <form>
+          <input type="text" id="search_text" placeholder="Search" autofocus />
+          <button type="button" id="search_btn">검색</button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <!-- 영화 정보 -->
+      <div class="movie_list"></div>
+    </main>
+  </body>
 </html>
