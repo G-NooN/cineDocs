@@ -8,6 +8,11 @@ header {
   box-shadow: 0px 0px 3px 0px lightskyblue;
 }
 
+h1 {
+  letter-spacing: 3px;
+  font-family: "Courier New", Courier, monospace;
+}
+
 /* 검색창 크기 조절 */
 #search_text,
 #search_btn {
