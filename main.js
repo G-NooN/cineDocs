@@ -32,13 +32,13 @@ window.onload = function () {
   const searchButton = document.getElementById("search_btn");
   searchButton.addEventListener("click", showSearchResults);
 
+  const movie_list = document.querySelector(".movie_list");
+
   // TMDB API data 가져오기
   fetch(url, options)
     .then((response) => response.json())
     .then((data) => {
-      const movie_list = document.querySelector(".movie_list");
       const movie_data = data["results"];
-
       // API의 정보를 HTML에 담아, return HTML Array
       const movie_result = movie_data.map((movie) => {
         let movie_html = `
@@ -68,7 +68,6 @@ window.onload = function () {
     fetch(url, options)
       .then((res) => res.json())
       .then((data) => {
-        const movie_list = document.querySelector(".movie_list");
         const movie_data = data["results"];
         // 검색 결과 Array return
         const searched_list = movie_data.filter((movie) => {
