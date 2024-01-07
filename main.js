@@ -9,34 +9,82 @@ const options = {
 
 const url = "https://api.themoviedb.org/3/movie/top_rated?language=ko-KR";
 
-fetch(url, options)
-  .then((response) => response.json())
-  .then((data) => {
-    const movie_list = document.querySelector(".movie_list");
-    const movie_data = data["results"];
+window.onload = function () {
+  const cineDocsTitle = document.getElementById("cineDocsTitle");
+  cineDocsTitle.addEventListener("click", function (e) {
+    window.location.reload();
+  });
 
-    movie_data.forEach((movie) => {
-      let _id = movie["id"];
-      let _title = movie["title"];
-      let _original_title = movie["original_title"];
-      let _release_date = movie["release_date"];
-      let _vote_average = movie["vote_average"];
-      let _overview = movie["overview"];
-      let _poster_path = movie["poster_path"];
+  const inputText = document.getElementById("search_text");
+  inputText.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      showSearchResults();
+    }
+  });
 
-      let movie_html = `
-      <div class="movie_card" onclick="alert('[${_title}]의 Movie ID : ${_id}')">
+  const searchButton = document.getElementById("search_btn");
+  searchButton.addEventListener("click", showSearchResults);
+
+  fetch(url, options)
+    .then((response) => response.json())
+    .then((data) => {
+      const movie_list = document.querySelector(".movie_list");
+      const movie_data = data["results"];
+
+      const movie_result = movie_data.map((movie) => {
+        let movie_html = `
+      <div class="movie_card" onclick="alert('[${movie["title"]}] 의 Movie ID : ${movie["id"]}')">
         <div class="movie_content">
-          <h2>${_title} (${_original_title})</h2>
-          <p><strong>개봉일</strong> : ${_release_date} / <strong>평점</strong> : ${_vote_average}</p>
-          <p>${_overview}</p>
+          <h2>${movie["title"]} (${movie["original_title"]})</h2>
+          <p><strong>개봉일</strong> : ${movie["release_date"]} / <strong>평점</strong> : ${movie["vote_average"]}</p>
+          <p>${movie["overview"]}</p>
         </div>
         <div class="movie_img">
-          <img src="https://image.tmdb.org/t/p/w185${_poster_path}" />
+          <img src='https://image.tmdb.org/t/p/w185${movie["poster_path"]}' />
         </div>
       </div>`;
+        return movie_html;
+      });
 
-      movie_list.innerHTML += movie_html;
-    });
-  })
-  .catch((err) => console.error(err));
+      movie_result.forEach((movie) => {
+        movie_list.innerHTML += movie;
+      });
+    })
+    .catch((err) => console.error(err));
+
+  function showSearchResults() {
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((data) => {
+        const movie_list = document.querySelector(".movie_list");
+        const movie_data = data["results"];
+        const searched_list = movie_data.filter((movie) => {
+          return (
+            movie["title"].includes(inputText.value) ||
+            movie["original_title"].toUpperCase().includes(inputText.value.toUpperCase())
+          );
+        });
+        const searched_result = searched_list.map((movie) => {
+          let movie_html = `
+      <div class="movie_card" onclick="alert('[${movie["title"]}] 의 Movie ID : ${movie["id"]}')">
+        <div class="movie_content">
+          <h2>${movie["title"]} (${movie["original_title"]})</h2>
+          <p><strong>개봉일</strong> : ${movie["release_date"]} / <strong>평점</strong> : ${movie["vote_average"]}</p>
+          <p>${movie["overview"]}</p>
+        </div>
+        <div class="movie_img">
+          <img src='https://image.tmdb.org/t/p/w185${movie["poster_path"]}' />
+        </div>
+      </div>`;
+          return movie_html;
+        });
+
+        movie_list.innerHTML = "";
+        searched_result.forEach((movie) => {
+          movie_list.innerHTML += movie;
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+};
