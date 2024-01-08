@@ -1,6 +1,6 @@
 ## CineDocs
 
-TMDB API를 활용한 영화 리스트 출력 Project ([결과물 링크](https://g-noon.github.io/cineDocs))
+TMDB API를 활용한 영화 리스트 출력 Project
 
 ### 주요 작업
 
