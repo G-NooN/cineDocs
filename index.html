@@ -10,13 +10,17 @@
   <body>
     <!-- 상단 메뉴 -->
     <header>
-      <div class="leftMenu">
-        <h1 id="cineDocsTitle">CineDocs</h1>
+      <div class="left-menu">
+        <h1>CineDocs</h1>
+        <ul>
+          <li>Popular</li>
+          <li>Top Rated</li>
+        </ul>
       </div>
-      <div class="rightMenu">
-        <form>
-          <input type="text" id="search_text" placeholder="Search" autofocus />
-          <button type="button" id="search_btn">검색</button>
+      <div class="right-menu">
+        <form id="search-form">
+          <input type="text" id="search-text" name="searchValue" placeholder="Search" autofocus />
+          <button type="submit" id="search-btn">검색</button>
         </form>
       </div>
     </header>
@@ -24,6 +28,7 @@
     <!-- 메인 화면 -->
     <main>
       <!-- 영화 정보 -->
+      <ul id="movie-list"></ul>
       <div class="movie_list"></div>
     </main>
   </body>
