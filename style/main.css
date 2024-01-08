@@ -8,28 +8,60 @@ header {
   box-shadow: 0px 0px 3px 0px lightskyblue;
 }
 
+main {
+  display: flex;
+}
+
 h1 {
   letter-spacing: 3px;
   font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
 }
 
-/* 검색창 크기 조절 */
-#search_text,
-#search_btn {
+#search-text,
+#search-btn {
   padding: 10px;
 }
 
-.movie_card,
-.movie_content,
-.movie_img {
-  padding: 30px;
+#movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+
+  padding: 2rem;
+  list-style: none;
 }
 
-.movie_card {
+.movie-item {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+  margin: 20px;
+  padding: 20px;
+  justify-self: center;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 100ms ease-in;
+}
+
+.movie-item:hover {
+  transform: scale(1.02);
+}
+
+.movie-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.sort-list {
   display: flex;
-  margin: 20px auto;
-  background-color: whitesmoke;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  box-shadow: 0px 0px 3px 0px lightblue;
+  list-style: none;
+}
+
+.sort-list li {
+  padding: 10px;
+}
+
+.sort-list li:hover {
+  color: darkorange;
+  cursor: pointer;
 }
