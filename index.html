@@ -11,11 +11,13 @@
     <!-- 상단 메뉴 -->
     <header>
       <div class="left-menu">
-        <h1>CineDocs</h1>
-        <ul>
-          <li>Popular</li>
-          <li>Top Rated</li>
+        <ul class="sort-list">
+          <li id="popular">Popular</li>
+          <li id="topRated">Top Rated</li>
         </ul>
+      </div>
+      <div class="center-menu">
+        <h1>CineDocs</h1>
       </div>
       <div class="right-menu">
         <form id="search-form">
@@ -29,7 +31,6 @@
     <main>
       <!-- 영화 정보 -->
       <ul id="movie-list"></ul>
-      <div class="movie_list"></div>
     </main>
   </body>
 </html>
