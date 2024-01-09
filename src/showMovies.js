@@ -2,7 +2,6 @@ export const generateMovieList = async (urlInfo) => {
   const movies = await fetchMovieData(urlInfo);
 
   const $movieList = document.querySelector("#movie-list");
-
   $movieList.innerHTML = movies
     .map(
       (movie) => `
@@ -15,15 +14,22 @@ export const generateMovieList = async (urlInfo) => {
     )
     .join("");
 
-  $movieList.addEventListener("click", showMovieID);
+  const $movieItem = document.querySelectorAll(".movie-item");
+  $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
 
   function showMovieID({ target }) {
-    if (target === $movieList) return;
-
-    if (target.matches(".movie-item")) {
-      alert(`Movie ID : ${target.id}`);
+    if (target.parentNode.matches(".movie-item")) {
+      let movieTitle = target.parentNode.firstElementChild.nextElementSibling.innerText;
+      alert(`[제목] : ${movieTitle}
+[Movie ID] : ${target.parentNode.id}`);
+    } else if (target.parentNode.matches("h2")) {
+      let movieTitle = target.parentNode.innerText;
+      alert(`[제목] : ${movieTitle}
+[Movie ID] : ${target.parentNode.parentNode.id}`);
     } else {
-      alert(`Movie ID : ${target.parentNode.id}`);
+      let movieTitle = target.parentNode.previousElementSibling.innerText;
+      alert(`[제목] : ${movieTitle}
+[Movie ID] : ${target.parentNode.parentNode.id}`);
     }
   }
 };
