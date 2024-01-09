@@ -1,3 +1,4 @@
+/* 상단 메뉴 */
 header {
   display: flex;
   justify-content: space-around;
@@ -8,21 +9,25 @@ header {
   box-shadow: 0px 0px 3px 0px lightskyblue;
 }
 
+/* 메인 화면 */
 main {
   display: flex;
 }
 
+/* 제목(로고) */
 h1 {
   letter-spacing: 3px;
   font-family: "Courier New", Courier, monospace;
   cursor: pointer;
 }
 
+/* 검색창 */
 #search-text,
 #search-btn {
   padding: 10px;
 }
 
+/* 영화 리스트 */
 #movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -32,6 +37,7 @@ h1 {
   list-style: none;
 }
 
+/* 각 영화 */
 .movie-item {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
   margin: 20px;
@@ -52,6 +58,7 @@ h1 {
   border-radius: 10px;
 }
 
+/* 카테고리 */
 .sort-list {
   display: flex;
   list-style: none;

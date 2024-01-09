@@ -1,3 +1,4 @@
+// 영화 리스트 출력
 export const generateMovieList = async (urlInfo) => {
   const movies = await fetchMovieData(urlInfo);
 
@@ -17,16 +18,19 @@ export const generateMovieList = async (urlInfo) => {
   const $movieItem = document.querySelectorAll(".movie-item");
   $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
 
+  // 영화 클릭 시 제목 & ID alert 출력
   function showMovieID({ target }) {
     if (target.parentNode.matches(".movie-item")) {
       let movieTitle = target.parentNode.firstElementChild.nextElementSibling.innerText;
       alert(`[제목] : ${movieTitle}
 [Movie ID] : ${target.parentNode.id}`);
     } else if (target.parentNode.matches("h2")) {
+      // h2 title
       let movieTitle = target.parentNode.innerText;
       alert(`[제목] : ${movieTitle}
 [Movie ID] : ${target.parentNode.parentNode.id}`);
     } else {
+      // p overview
       let movieTitle = target.parentNode.previousElementSibling.innerText;
       alert(`[제목] : ${movieTitle}
 [Movie ID] : ${target.parentNode.parentNode.id}`);
@@ -34,6 +38,7 @@ export const generateMovieList = async (urlInfo) => {
   }
 };
 
+// TMDB API 데이터 가져오기
 async function fetchMovieData(urlInfo) {
   const options = {
     method: "GET",
