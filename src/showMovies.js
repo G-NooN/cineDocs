@@ -6,12 +6,12 @@ export const generateMovieList = async (urlInfo) => {
   $movieList.innerHTML = movies
     .map(
       (movie) => `
-  <li class="movie-item" id="${movie.id}">
+  <div class="movie-item" id="${movie.id}">
     <img src="https://image.tmdb.org/t/p/w185${movie.poster_path}" alt="${movie.title}">
     <h2><span class="movie-title">${movie.title}</span> (<span class="movie-original-title">${movie.original_title}</span>)</h2>
     <p><strong>개봉일</strong> : ${movie.release_date} / <strong>평점</strong> : ${movie.vote_average}</p>
     <p>${movie.overview}</p>
-  </li>`
+  </div>`
     )
     .join("");
 
