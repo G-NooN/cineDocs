@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/review.css" />
     <script type="module" src="./src/main.js"></script>
   </head>
   <body>
@@ -17,7 +18,8 @@
         <div class="left-menu">
           <ul class="sort-list">
             <li id="popular">Popular</li>
-            <li id="topRated">Top Rated</li>
+            <li>/</li>
+            <li id="top-rated">Top Rated</li>
           </ul>
         </div>
         <div class="center-menu">
@@ -40,6 +42,7 @@
       </header>
       <main>
         <section>
+          <!-- 영화 정보 section -->
           <div class="movieInfo-main">
             <!--이 div 전체에 backdrop path 이미지로 뒷배경-->
             <div class="movieInfo-box">
@@ -64,9 +67,33 @@
               </div>
             </div>
           </div>
+          <!-- 영화 리뷰 section -->
+          <div class="review-box">
+            <form id="comment-form">
+              <div class="user-info">
+                <input type="text" id="username" placeholder="이름" required />
+                <input
+                  type="password"
+                  id="user-password"
+                  placeholder="비밀번호"
+                  required
+                />
+              </div>
+              <div class="comment-area">
+                <textarea
+                  id="comment"
+                  placeholder="리뷰를 입력하세요."
+                  required
+                ></textarea>
+                <button type="button" id="submit-btn" onclick="saveComment()">
+                  등록
+                </button>
+              </div>
+            </form>
+            <div id="comment-list"></div>
+          </div>
         </section>
       </main>
-      <footer></footer>
     </div>
   </body>
 </html>
