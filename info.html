@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>'영화 제목 (연도)' ─ CinéDocs</title>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style/main.css" />
     <link rel="stylesheet" href="./style/review.css" />
     <script type="module" src="./src/main.js"></script>
@@ -21,11 +24,18 @@
         </div>
         <div class="center-menu">
           <!-- 페이지 로고 및 제목-->
-          <h1>CinéDocs</h1>
+          <!-- 홈 페이지 링크걸기-->
+          <h1 class="title">CinéDocs</h1>
         </div>
         <div class="right-menu">
           <form id="search-form">
-            <input type="text" id="search-text" name="searchValue" placeholder="Search" autofocus />
+            <input
+              type="text"
+              id="search-text"
+              name="searchValue"
+              placeholder="Search"
+              autofocus
+            />
             <button type="submit" id="search-btn">검색</button>
           </form>
         </div>
@@ -41,14 +51,17 @@
                 alt="The Hunger Games: The Ballad of Songbirds & Snakes"
               />
               <div class="movieInfo-detail-box">
-                <h1 class="movieInfo-Ktitle">헝거게임: 노래하는 새와 뱀의 발라드</h1>
+                <h1 class="movieInfo-Ktitle">
+                  헝거게임: 노래하는 새와 뱀의 발라드
+                </h1>
                 <span class="movieInfo-Otitle">
                   (The Hunger Games: The Ballad of Songbirds & Snakes)
                 </span>
                 <p>
-                  반란의 불씨를 잠재우기 위해 시작된 잔인한 서바이벌 헝거게임. 헝거게임 10회를 맞아
-                  ‘멘토제’가 도입되고 ‘스노우’는 12구역의 소녀 ‘루시 그레이’의 멘토가 된다. 그는
-                  몰락한 가문의 영광을 되찾기 위해 ‘루시 그레이’를 헝거게임에서 우승 시키려 수단과
+                  반란의 불씨를 잠재우기 위해 시작된 잔인한 서바이벌 헝거게임.
+                  헝거게임 10회를 맞아 ‘멘토제’가 도입되고 ‘스노우’는 12구역의
+                  소녀 ‘루시 그레이’의 멘토가 된다. 그는 몰락한 가문의 영광을
+                  되찾기 위해 ‘루시 그레이’를 헝거게임에서 우승 시키려 수단과
                   방법을 가리지 않는데…
                 </p>
               </div>
@@ -59,11 +72,22 @@
             <form id="comment-form">
               <div class="user-info">
                 <input type="text" id="username" placeholder="이름" required />
-                <input type="password" id="user-password" placeholder="비밀번호" required />
+                <input
+                  type="password"
+                  id="user-password"
+                  placeholder="비밀번호"
+                  required
+                />
               </div>
               <div class="comment-area">
-                <textarea id="comment" placeholder="리뷰를 입력하세요." required></textarea>
-                <button type="button" id="submit-btn" onclick="saveComment()">등록</button>
+                <textarea
+                  id="comment"
+                  placeholder="리뷰를 입력하세요."
+                  required
+                ></textarea>
+                <button type="button" id="submit-btn" onclick="saveComment()">
+                  등록
+                </button>
               </div>
             </form>
             <div id="comment-list"></div>

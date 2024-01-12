@@ -17,10 +17,11 @@ export const generateMovieList = async (category) => {
 
   // 영화 클릭 시 info.html(상세페이지)로 넘어가기
   const movieItem = document.querySelectorAll(".movie-item");
-  movieItem.forEach((movie) => movie.addEventListener("click", linkMovieInfo));
-  function linkMovieInfo() {
-    window.location.href = "../info.html";
-  }
+  movieItem.forEach((movie) =>
+    movie.addEventListener("click", () => {
+      window.location.href = "../info.html";
+    })
+  );
 
   // $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
   //   // 영화 클릭 시 제목 & ID alert 출력
