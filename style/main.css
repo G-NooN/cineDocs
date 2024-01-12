@@ -1,3 +1,7 @@
+:root {
+  font-family: "NanumSquare", "NanumSquareBold";
+}
+
 /* 상단 메뉴 */
 header {
   display: flex;
@@ -70,4 +74,53 @@ h1 {
 .sort-list li:hover {
   color: darkorange;
   cursor: pointer;
+}
+
+/* 상세페이지 - 메인 섹션 */
+.movieInfo-main {
+  width: 100vw;
+  height: 700px; /* 100%이렇게쓰면 높이가  p태그에맞춰서 조정됨 */
+  background-image: url("https://image.tmdb.org/t/p/original/5a4JdoFwll5DRtKMe7JLuGQ9yJm.jpg");
+  /* back-drop path 주소 이미지 넣기 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "NanumSquare", "NanumSquareBold";
+  color: white;
+}
+
+.movieInfo-box {
+  display: flex;
+}
+
+.movieInfo-box img {
+  width: 400px;
+  height: 550px;
+  border-radius: 7px;
+  margin: 80px;
+}
+
+.movieInfo-header {
+  display: flex;
+  margin-top: 160px;
+  font-family: "NanumSquare", "NanumSquareBold";
+  color: white;
+}
+
+.movieInfo-header .movie-Ktitle {
+  font-size: 40px;
+  font-family: "NanumSquare", "NanumSquareBold";
+  color: white;
+}
+
+.movieInfo-header .movie-year {
+  font-family: "NanumSquare", "NanumSquareBold";
+  font-size: 30px;
+  color: rgb(196, 195, 195);
+  margin-left: 10px;
+}
+
+.MovieInfo-texts {
+  width: 500px;
+  margin: -470px 550px 0;
+  font-size: 20px;
 }
