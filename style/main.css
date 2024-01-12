@@ -84,7 +84,7 @@ h1 {
   /* back-drop path 주소 이미지 넣기 */
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: "NanumSquare", "NanumSquareBold";
+  /* font-family: "NanumSquare", "NanumSquareBold"; */
   color: white;
 }
 
@@ -102,24 +102,24 @@ h1 {
 .movieInfo-header {
   display: flex;
   margin-top: 160px;
-  font-family: "NanumSquare", "NanumSquareBold";
+  /* font-family: "NanumSquare", "NanumSquareBold"; */
   color: white;
 }
 
 .movieInfo-header .movie-Ktitle {
   font-size: 40px;
-  font-family: "NanumSquare", "NanumSquareBold";
+  /* font-family: "NanumSquare", "NanumSquareBold"; */
   color: white;
 }
 
 .movieInfo-header .movie-year {
-  font-family: "NanumSquare", "NanumSquareBold";
+  /* font-family: "NanumSquare", "NanumSquareBold"; */
   font-size: 30px;
   color: rgb(196, 195, 195);
   margin-left: 10px;
 }
 
-.MovieInfo-texts {
+.movieInfo-texts {
   width: 500px;
   margin: -470px 550px 0;
   font-size: 20px;
