@@ -1,14 +1,5 @@
-// id 넘겨받기
-if (localStorage.getItem("movie_id")) {
-  // 있으면
-  const movie_id = localStorage.getItem("movie_id");
-  // alert(movie_id); 여기까지 잘 뜸
-  generateMovieInfo(movie_id);
-}
-
 const generateMovieInfo = async (movie_id) => {
-  // alert(movie_id);
-  const movie = await fetchMovieDetailsData(movie_id); // movie_id 해당하는 하나의 영화 detail 정보 객체
+  const movie = await fetchMovieDetailsData(movie_id); // 받은 movie_id에 해당하는 하나의 영화 detail 정보 객체
 
   const movieInfo = document.querySelector(".movieInfo-box");
   movieInfo.innerHTML = `
@@ -27,9 +18,16 @@ const generateMovieInfo = async (movie_id) => {
         ${movie.overview}
         </p>
     </div>`;
-};
+}; // info.html 페이지의 영화 상세 정보 구성
 
-// TMDB API 데이터 가져오기 -Details
+// 메인페이지에서 (영화카드 클릭 -> showMovies.js에서 클릭이벤트) movie_id 넘겨받기
+if (localStorage.getItem("movie_id")) {
+  // 있으면
+  const movie_id = localStorage.getItem("movie_id");
+  generateMovieInfo(movie_id);
+}
+
+// TMDB API 데이터 가져오기 - Details
 // 이 함수의 인자로 movie_id, 해당(클릭된)영화 id 넘겨받아야
 async function fetchMovieDetailsData(movie_id) {
   const options = {
@@ -41,9 +39,9 @@ async function fetchMovieDetailsData(movie_id) {
     },
   };
 
-  const url = "https://api.themoviedb.org/3/movie/${movie_id}?language=ko-KO";
+  const url = `https://api.themoviedb.org/3/movie/${movie_id}?language=ko-KR`;
 
   const movie_data = await fetch(url, options).then((data) => data.json());
 
-  return movie_data; // 이 객체는 results 키 없음
+  return movie_data; // 이 객체는 results 키 없음 주의
 }
