@@ -1,4 +1,13 @@
-export const generateMovieInfo = async (movie_id) => {
+// id 넘겨받기
+if (localStorage.getItem("movie_id")) {
+  // 있으면
+  const movie_id = localStorage.getItem("movie_id");
+  // alert(movie_id); 여기까지 잘 뜸
+  generateMovieInfo(movie_id);
+}
+
+const generateMovieInfo = async (movie_id) => {
+  // alert(movie_id);
   const movie = await fetchMovieDetailsData(movie_id); // movie_id 해당하는 하나의 영화 detail 정보 객체
 
   const movieInfo = document.querySelector(".movieInfo-box");

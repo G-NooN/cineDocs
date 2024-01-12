@@ -15,13 +15,43 @@ export const generateMovieList = async (category) => {
     )
     .join("");
 
-  // 영화 클릭 시 info.html(상세페이지)로 넘어가기
+  //   const movieItem = document.querySelectorAll(".movie-item");
+  //   movieItem.forEach((movieitem) =>
+  //     movieitem.addEventListener("click", () => {
+  //         movies.map(
+  //         (movie) => localStorage.setItem("movie_id", ${movie.id});
+  //         )
+
+  // );
+
+  // 영화 클릭 시 info.html(상세페이지)로 넘어가기, 영화id 데이터 전달하기
+  // 시도 중
   const movieItem = document.querySelectorAll(".movie-item");
   movieItem.forEach((movie) =>
-    movie.addEventListener("click", () => {
-      window.location.href = "../info.html";
+    movie.addEventListener("click", (event) => {
+      if (event.target.parentElement.getAttribute("class") == "movie-item") {
+        // 사진,p 태그 누르면 해당됨
+        const movie_id = event.target.parentElement.getAttribute("id");
+        console.log(movie_id);
+        localStorage.setItem("movie_id", movie_id); // 잘 저장됨
+        window.location.href = "../info.html"; // 잘 넘어감
+      } else if (event.target.getAttribute("class") == "movie-item") {
+        console.log(event);
+        const movie_id = event.target.getAttribute("id");
+      } else {
+        console.log(event);
+        const movie_id =
+          event.target.parentElement.parentElement.getAttribute("id"); // ??
+      }
+      // const movie_id = event.target.parentElement.getAttribute("id");
+      // console.log(event); // event 객체내용 확인 가능 (콘솔로만 가능)
+      // PointerEvent {key:value}로 이뤄진 객체, target 이라는 key - 눌린 태그 (img,p등) 혹은 div 가 있음
+      // localStorage.setItem("movie_id", movie_id);
+      // window.location.href = "../info.html";
     })
   );
+
+  //
 
   // $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
   //   // 영화 클릭 시 제목 & ID alert 출력
@@ -43,7 +73,6 @@ export const generateMovieList = async (category) => {
   //     }
   //   }
 };
-
 // TMDB API 데이터 가져오기
 async function fetchMovieData(category) {
   const options = {
