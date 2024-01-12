@@ -7,7 +7,11 @@ export const showSearchResult = (searchKeyword) => {
     const originalTitle = item.querySelector(".movie-original-title").textContent.toUpperCase(); // 원제
     const searchedValue = searchKeyword;
 
-    if (title.includes(searchedValue) || originalTitle.includes(searchedValue.toUpperCase())) {
+    if (
+      title.includes(searchedValue) ||
+      title.toUpperCase().includes(searchedValue.toUpperCase()) ||
+      originalTitle.includes(searchedValue.toUpperCase())
+    ) {
       item.style.display = "block";
     } else {
       item.style.display = "none";
