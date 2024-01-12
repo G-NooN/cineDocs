@@ -1,9 +1,9 @@
 // 영화 리스트 출력
-export const generateMovieList = async (urlInfo) => {
-  const movies = await fetchMovieData(urlInfo);
+export const generateMovieList = async (category) => {
+  const movies = await fetchMovieData(category);
 
-  const $movieList = document.querySelector("#movie-list");
-  $movieList.innerHTML = movies
+  const movieList = document.querySelector("#movie-list");
+  movieList.innerHTML = movies
     .map(
       (movie) => `
   <div class="movie-item" id="${movie.id}">
@@ -15,31 +15,31 @@ export const generateMovieList = async (urlInfo) => {
     )
     .join("");
 
-  const $movieItem = document.querySelectorAll(".movie-item");
-  $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
+  const movieItem = document.querySelectorAll(".movie-item");
+  // $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
 
-  // 영화 클릭 시 제목 & ID alert 출력
-  function showMovieID({ target }) {
-    if (target.parentNode.matches(".movie-item")) {
-      let movieTitle = target.parentNode.firstElementChild.nextElementSibling.innerText;
-      alert(`[제목] : ${movieTitle}
-[Movie ID] : ${target.parentNode.id}`);
-    } else if (target.parentNode.matches("h2")) {
-      // h2 title
-      let movieTitle = target.parentNode.innerText;
-      alert(`[제목] : ${movieTitle}
-[Movie ID] : ${target.parentNode.parentNode.id}`);
-    } else {
-      // p overview
-      let movieTitle = target.parentNode.previousElementSibling.innerText;
-      alert(`[제목] : ${movieTitle}
-[Movie ID] : ${target.parentNode.parentNode.id}`);
-    }
-  }
+  //   // 영화 클릭 시 제목 & ID alert 출력
+  //   function showMovieID({ target }) {
+  //     if (target.parentNode.matches(".movie-item")) {
+  //       let movieTitle = target.parentNode.firstElementChild.nextElementSibling.innerText;
+  //       alert(`[제목] : ${movieTitle}
+  // [Movie ID] : ${target.parentNode.id}`);
+  //     } else if (target.parentNode.matches("h2")) {
+  //       // h2 title
+  //       let movieTitle = target.parentNode.innerText;
+  //       alert(`[제목] : ${movieTitle}
+  // [Movie ID] : ${target.parentNode.parentNode.id}`);
+  //     } else {
+  //       // p overview
+  //       let movieTitle = target.parentNode.previousElementSibling.innerText;
+  //       alert(`[제목] : ${movieTitle}
+  // [Movie ID] : ${target.parentNode.parentNode.id}`);
+  //     }
+  //   }
 };
 
 // TMDB API 데이터 가져오기
-async function fetchMovieData(urlInfo) {
+async function fetchMovieData(category) {
   const options = {
     method: "GET",
     headers: {
@@ -49,7 +49,7 @@ async function fetchMovieData(urlInfo) {
     },
   };
 
-  const url = `https://api.themoviedb.org/3/movie/${urlInfo}?language=ko-KR`;
+  const url = `https://api.themoviedb.org/3/movie/${category}?language=ko-KR`;
 
   const movie_data = await fetch(url, options).then((data) => data.json());
 
