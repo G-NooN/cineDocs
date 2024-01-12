@@ -1,13 +1,7 @@
-/* :root {
-  font-family: "NanumSquare", "NanumSquareBold";
-} */
 
-/* @font-face {
+:root {
   font-family: "NanumSquare", "NanumSquareBold";
-  src: url("https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css");
-  font-weight: normal;
-  font-style: normal;
-} */
+}
 
 /* 상단 메뉴 */
 header {
@@ -89,6 +83,7 @@ h1 {
   height: 710px; /* 100%이렇게쓰면 높이가  p태그에맞춰서 조정됨 */
   /* back-drop path 주소 이미지 넣기 */
   background-image: url("https://image.tmdb.org/t/p/original/5a4JdoFwll5DRtKMe7JLuGQ9yJm.jpg");
+
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "NanumSquare", "NanumSquareBold";
@@ -127,14 +122,16 @@ h1 {
   padding-top: 100px;
 }
 
-.movieInfo-Ktitle {
+.movieInfo-Ktitle, .movieInfo-Otitle {
   font-family: "NanumSquare", "NanumSquareBold";
+}
+
+.movieInfo-Ktitle {
   font-size: 40px;
   color: white;
 }
 
 .movieInfo-Otitle {
-  font-family: "NanumSquare", "NanumSquareBold";
   font-size: 18px;
   margin-top: -20px;
 }
@@ -145,4 +142,5 @@ h1 {
   width: 70%;
   margin-top: 50px;
   line-height: 1.6em;
+
 }
