@@ -15,17 +15,7 @@ export const generateMovieList = async (category) => {
     )
     .join("");
 
-  //   const movieItem = document.querySelectorAll(".movie-item");
-  //   movieItem.forEach((movieitem) =>
-  //     movieitem.addEventListener("click", () => {
-  //         movies.map(
-  //         (movie) => localStorage.setItem("movie_id", ${movie.id});
-  //         )
-
-  // );
-
-  // 영화 클릭 시 info.html(상세페이지)로 넘어가기, 영g화id 데이터 전달하기
-  // 시도 중
+  // 영화 클릭 시 info.html(상세페이지)로 넘어가기, 영화id 데이터 전달하기
   const movieItem = document.querySelectorAll(".movie-item");
   movieItem.forEach((movie) =>
     movie.addEventListener("click", (event) => {
