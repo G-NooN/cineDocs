@@ -56,19 +56,16 @@ header {
   padding: 0px 100px;
 }
 
-.first-line {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.left-menu {
+.left-menu,
+.right-menu {
   display: flex;
   align-items: center;
-}
-
-.second-line {
-  justify-content: center;
 }
 
 /* 메인 화면 */
@@ -83,17 +80,35 @@ main {
   cursor: pointer;
 }
 
+.title:hover {
+  transform: scale(1.05);
+}
+
+#search {
+  cursor: pointer;
+  transition: transform 100ms ease-in;
+}
+
+#search:hover {
+  color: red;
+  transform: scale(1.05);
+}
+
 /* 검색창 */
+#search-form {
+  display: flex;
+  align-items: baseline;
+}
+
 #search-text {
   padding: 0 10px;
   margin: 10px 0;
-  width: 40vw;
+  width: 15vw;
   height: 40px;
 }
 
 #search-btn {
-  margin: 5px;
-  width: 60px;
+  margin: 10px;
   height: 40px;
 }
 
@@ -140,11 +155,13 @@ main {
 
 .sort-list li {
   padding: 10px;
+  transition: transform 100ms ease-in;
 }
 
 .sort-list li:hover {
   color: red;
   cursor: pointer;
+  transform: scale(1.15);
 }
 
 /* 상세페이지 - 메인 섹션 */
