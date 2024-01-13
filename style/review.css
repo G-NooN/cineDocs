@@ -92,3 +92,26 @@
 .confirmPassword {
   padding: 5px;
 }
+
+#deleteCommentBtn {
+  margin-left: 5px;
+  background-color: #777;
+  color: #fff;
+  border-radius: 3px;
+  border-color: #999;
+}
+
+.passwordInputForm {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
+}
+
+#confirmPassword {
+  padding: 2px;
+}
+
+#confirmButtons {
+  display: inline-block;
+  margin-left: 6px;
+}

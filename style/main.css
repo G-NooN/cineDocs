@@ -1,16 +1,71 @@
+/* 폰트 지정 */
 :root {
   font-family: "NanumSquare", "NanumSquareBold";
 }
 
+/* 아이콘 */
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+.material-icons.md-24 {
+  font-size: 24px;
+}
+.material-icons.md-36 {
+  font-size: 36px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
 /* 상단 메뉴 */
 header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  background-color: rgba(0, 0, 0, 0.888);
+  color: white;
+  padding: 0px 100px;
+}
 
-  background-color: lightblue;
-  border-radius: 5px;
-  box-shadow: 0px 0px 3px 0px lightskyblue;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-menu,
+.right-menu {
+  display: flex;
+  align-items: center;
 }
 
 /* 메인 화면 */
@@ -25,10 +80,36 @@ main {
   cursor: pointer;
 }
 
+.title:hover {
+  transform: scale(1.05);
+}
+
+#search {
+  cursor: pointer;
+  transition: transform 100ms ease-in;
+}
+
+#search:hover {
+  color: red;
+  transform: scale(1.05);
+}
+
 /* 검색창 */
-#search-text,
+#search-form {
+  display: flex;
+  align-items: baseline;
+}
+
+#search-text {
+  padding: 0 10px;
+  margin: 10px 0;
+  width: 15vw;
+  height: 40px;
+}
+
 #search-btn {
-  padding: 10px;
+  margin: 10px;
+  height: 40px;
 }
 
 /* 영화 리스트 */
@@ -74,11 +155,13 @@ main {
 
 .sort-list li {
   padding: 10px;
+  transition: transform 100ms ease-in;
 }
 
 .sort-list li:hover {
-  color: darkorange;
+  color: red;
   cursor: pointer;
+  transform: scale(1.15);
 }
 
 /* 상세페이지 - 메인 섹션 */

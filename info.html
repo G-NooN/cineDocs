@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>'영화 제목 (연도)' ─ CinéDocs</title>
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-      rel="stylesheet"
-    />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="./style/main.css" />
     <link rel="stylesheet" href="./style/review.css" />
     <script type="module" src="./src/info.js"></script>
@@ -16,29 +14,22 @@
   <body>
     <div class="wrapper">
       <header>
-        <div class="left-menu">
-          <ul class="sort-list">
-            <li id="popular">Popular</li>
-            <li>/</li>
-            <li id="top-rated">Top Rated</li>
-          </ul>
-        </div>
-        <div class="center-menu">
-          <!-- 페이지 로고 및 제목-->
-          <!-- 홈 페이지 링크걸기-->
-          <h1 class="title">CinéDocs</h1>
-        </div>
-        <div class="right-menu">
-          <form id="search-form">
-            <input
-              type="text"
-              id="search-text"
-              name="searchValue"
-              placeholder="Search"
-              autofocus
-            />
-            <button type="submit" id="search-btn">검색</button>
-          </form>
+        <div class="header">
+          <div class="left-menu">
+            <h1 class="title">CinéDocs</h1>
+            <ul class="sort-list">
+              <li id="popular">인기 TOP</li>
+              <li id="top-rated">평점 TOP</li>
+            </ul>
+          </div>
+          <div class="right-menu">
+            <form id="search-form" style="display: none">
+              <input type="text" id="search-text" name="searchValue" placeholder="Search" />
+              <button type="submit" id="search-btn">검색</button>
+            </form>
+            <span class="material-icons md-36" id="search">search</span>
+            <span id="searchBtnStatus">off</span>
+          </div>
         </div>
       </header>
       <main>
@@ -73,22 +64,11 @@
             <form id="comment-form">
               <div class="user-info">
                 <input type="text" id="username" placeholder="이름" required />
-                <input
-                  type="password"
-                  id="user-password"
-                  placeholder="비밀번호"
-                  required
-                />
+                <input type="password" id="user-password" placeholder="비밀번호" required />
               </div>
               <div class="comment-area">
-                <textarea
-                  id="comment"
-                  placeholder="리뷰를 입력하세요."
-                  required
-                ></textarea>
-                <button type="button" id="submit-btn" onclick="saveComment()">
-                  등록
-                </button>
+                <textarea id="comment" placeholder="리뷰를 입력하세요." required></textarea>
+                <button type="button" id="submit-btn" onclick="saveComment()">등록</button>
               </div>
             </form>
             <div id="comment-list"></div>
