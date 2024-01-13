@@ -62,9 +62,9 @@
       } else if (commentText === '') {
         alert('내용을 입력하세요.');
         setTimeout(function () {
-          const imputText = document.getElementById('comment');
-          if (imputText) {
-            imputText.focus();
+          const inputText = document.getElementById('comment');
+          if (inputText) {
+            inputText.focus();
           }
         });
         return;
@@ -75,9 +75,9 @@
       if (commentText.length > maxLength) {
         alert('리뷰는 15자 이하여야 합니다.');
         setTimeout(function () {
-          const imputText = document.getElementById('comment');
-          if (imputText) {
-            imputText.focus();
+          const inputText = document.getElementById('comment');
+          if (inputText) {
+            inputText.focus();
           }
         });
         return;
