@@ -43,8 +43,6 @@ export const generateMovieList = async (category) => {
     })
   );
 
-  //
-
   // $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
   //   // 영화 클릭 시 제목 & ID alert 출력
   //   function showMovieID({ target }) {

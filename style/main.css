@@ -85,9 +85,6 @@ main {
 .movieInfo-main {
   width: 100vw;
   height: 710px; /* 100%이렇게쓰면 높이가  p태그에맞춰서 조정됨 */
-  /* back-drop path 주소 이미지 넣기 */
-  background-image: url("https://image.tmdb.org/t/p/original/5a4JdoFwll5DRtKMe7JLuGQ9yJm.jpg");
-
   background-size: cover;
   background-repeat: no-repeat;
   /* font-family: "NanumSquare", "NanumSquareBold"; */

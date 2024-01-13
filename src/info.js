@@ -1,6 +1,8 @@
+// info.html 페이지의 영화 상세 정보 구성
 const generateMovieInfo = async (movie_id) => {
   const movie = await fetchMovieDetailsData(movie_id); // 받은 movie_id에 해당하는 하나의 영화 detail 정보 객체
 
+  // body 태그 안 영화 상세정보 페이지 메인 구성 - (포스터이미지, 영화 제목, 원제, 개요)
   const movieInfo = document.querySelector(".movieInfo-box");
   movieInfo.innerHTML = `
       <img
@@ -18,7 +20,17 @@ const generateMovieInfo = async (movie_id) => {
         ${movie.overview}
         </p>
     </div>`;
-}; // info.html 페이지의 영화 상세 정보 구성
+
+  // 영화 뒷배경 이미지 (backdrop_path 주소 사용) 뜨게 하기
+  const movieInfoMain = document.querySelector(".movieInfo-main");
+  movieInfoMain.style.backgroundImage = `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`;
+
+  // head태그의 title (페이지, 탭 제목) : 영화 제목과 개봉연도, 사이트제목 뜨게 하기
+  const movieHeadTitle = document.querySelector("title");
+  let movieYear = movie.release_date.substring(0, 4);
+
+  movieHeadTitle.innerHTML = `${movie.title} (${movieYear}) ─ CinéDocs`;
+};
 
 // 메인페이지에서 (영화카드 클릭 -> showMovies.js에서 클릭이벤트) movie_id 넘겨받기
 if (localStorage.getItem("movie_id")) {
