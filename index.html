@@ -4,36 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to CinéDocs</title>
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-      rel="stylesheet"
-    />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="./style/main.css" />
     <script type="module" src="./src/main.js"></script>
   </head>
   <body>
     <!-- 상단 메뉴 -->
     <header>
-      <div class="left-menu">
-        <ul class="sort-list">
-          <li id="popular">Popular</li>
-          <li>/</li>
-          <li id="top-rated">Top Rated</li>
-        </ul>
+      <div class="first-line">
+        <div class="left-menu">
+          <h1 class="title">CinéDocs</h1>
+          <ul class="sort-list">
+            <li id="popular">인기 영화</li>
+            <li>/</li>
+            <li id="top-rated">높은 평점</li>
+          </ul>
+        </div>
+        <div class="right-menu">
+          <span class="material-icons md-36" id="search">search</span>
+        </div>
       </div>
-      <div class="center-menu">
-        <!-- 페이지 로고 및 제목-->
-        <h1 class="title">CinéDocs</h1>
-      </div>
-      <div class="right-menu">
+      <div class="second-line" style="display: none">
         <form id="search-form">
-          <input
-            type="text"
-            id="search-text"
-            name="searchValue"
-            placeholder="Search"
-            autofocus
-          />
+          <input type="text" id="search-text" name="searchValue" placeholder="Search" />
           <button type="submit" id="search-btn">검색</button>
         </form>
       </div>
