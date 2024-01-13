@@ -7,15 +7,34 @@ generateMovieList("top_rated"); // 기본값: Top Rated
 const title = document.querySelector(".title");
 title.addEventListener("click", (event) => {
   event.preventDefault();
-  window.location.href = "../index.html";
+  window.location.href = "./index.html";
 });
 
-// 검색
+// 검색창 유효성 검사
 const form = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-text");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  showSearchResult(searchInput.value);
+  if (searchInput.value.length === 0) {
+    alert("값을 입력해주세요.");
+    return;
+  } else {
+    showSearchResult(searchInput.value);
+  }
+});
+
+// 검색창 on/off 설정
+const search = document.querySelector("#search");
+const searchBtnStatus = document.querySelector("#searchBtnStatus");
+search.addEventListener("click", () => {
+  if (form.style.display === "none") {
+    form.style.display = "flex";
+    searchBtnStatus.innerText = "on";
+  } else {
+    form.style.display = "none";
+    searchBtnStatus.innerText = "off";
+  }
+  searchInput.focus();
 });
 
 /* 영화 리스트 카테고리 설정 */
