@@ -3,11 +3,11 @@ import { showSearchResult } from "./search.js"; // 검색
 
 generateMovieList("top_rated"); // 기본값: Top Rated
 
-// 제목(로고) 클릭 시 화면 새로고침
-const h1 = document.querySelector("h1");
-h1.addEventListener("click", (event) => {
+// 제목(로고) 클릭 시 화면 새로고침 => 메인페이지 화면 이동으로 변경
+const title = document.querySelector(".title");
+title.addEventListener("click", (event) => {
   event.preventDefault();
-  window.location.reload();
+  window.location.href = "../index.html";
 });
 
 // 검색

@@ -19,7 +19,7 @@ main {
 }
 
 /* 제목(로고) */
-h1 {
+.title {
   letter-spacing: 3px;
   font-family: "Courier New", Courier, monospace;
   cursor: pointer;
@@ -50,6 +50,7 @@ h1 {
   cursor: pointer;
   user-select: none;
   transition: transform 100ms ease-in;
+  line-height: 1.6em;
 }
 
 .movie-item:hover {
@@ -59,6 +60,10 @@ h1 {
 .movie-item img {
   width: 100%;
   border-radius: 10px;
+}
+
+.movie-title {
+  line-height: 1.6em;
 }
 
 /* 카테고리 */
