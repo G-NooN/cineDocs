@@ -12,24 +12,22 @@
   <body>
     <!-- 상단 메뉴 -->
     <header>
-      <div class="first-line">
+      <div class="header">
         <div class="left-menu">
           <h1 class="title">CinéDocs</h1>
           <ul class="sort-list">
-            <li id="popular">인기 영화</li>
-            <li>/</li>
-            <li id="top-rated">높은 평점</li>
+            <li id="popular">인기 TOP</li>
+            <li id="top-rated">평점 TOP</li>
           </ul>
         </div>
         <div class="right-menu">
+          <form id="search-form" style="display: none">
+            <input type="text" id="search-text" name="searchValue" placeholder="Search" />
+            <button type="submit" id="search-btn">검색</button>
+          </form>
           <span class="material-icons md-36" id="search">search</span>
+          <span id="searchBtnStatus">off</span>
         </div>
-      </div>
-      <div class="second-line" style="display: none">
-        <form id="search-form">
-          <input type="text" id="search-text" name="searchValue" placeholder="Search" />
-          <button type="submit" id="search-btn">검색</button>
-        </form>
       </div>
     </header>
 
