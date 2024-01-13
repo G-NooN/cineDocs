@@ -79,13 +79,29 @@ h1 {
 /* 상세페이지 - 메인 섹션 */
 .movieInfo-main {
   width: 100vw;
-  height: 700px; /* 100%이렇게쓰면 높이가  p태그에맞춰서 조정됨 */
-  background-image: url("https://image.tmdb.org/t/p/original/5a4JdoFwll5DRtKMe7JLuGQ9yJm.jpg");
+  height: 710px; /* 100%이렇게쓰면 높이가  p태그에맞춰서 조정됨 */
   /* back-drop path 주소 이미지 넣기 */
+  background-image: url("https://image.tmdb.org/t/p/original/5a4JdoFwll5DRtKMe7JLuGQ9yJm.jpg");
+
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: "NanumSquare", "NanumSquareBold";
+  /* font-family: "NanumSquare", "NanumSquareBold"; */
   color: white;
+}
+
+.movieInfo-main::after {
+  /* 가상 클래스 - 이미지 음영 */
+  content: "";
+  position: absolute;
+  top: 87px; /* %든 px이든 페이지크기따라 고정은안됨 */
+  left: 0.4%;
+  width: 100%;
+  height: 710px;
+  background-color: rgba(0, 0, 0, 0.888);
+}
+
+.movieInfo-main * {
+  z-index: 1;
 }
 
 .movieInfo-box {
@@ -99,28 +115,31 @@ h1 {
   margin: 80px;
 }
 
-.movieInfo-header {
+.movieInfo-detail-box {
   display: flex;
-  margin-top: 160px;
-  font-family: "NanumSquare", "NanumSquareBold";
-  color: white;
+  flex-direction: column;
+  padding-top: 100px;
 }
 
-.movieInfo-header .movie-Ktitle {
+.movieInfo-Ktitle,
+.movieInfo-Otitle {
+  font-family: "NanumSquare", "NanumSquareBold";
+}
+
+.movieInfo-Ktitle {
   font-size: 40px;
-  font-family: "NanumSquare", "NanumSquareBold";
   color: white;
 }
 
-.movieInfo-header .movie-year {
-  font-family: "NanumSquare", "NanumSquareBold";
-  font-size: 30px;
-  color: rgb(196, 195, 195);
-  margin-left: 10px;
+.movieInfo-Otitle {
+  font-size: 18px;
+  margin-top: -20px;
 }
 
-.MovieInfo-texts {
-  width: 500px;
-  margin: -470px 550px 0;
+.movieInfo-detail-box p {
+  color: white;
   font-size: 20px;
+  width: 70%;
+  margin-top: 50px;
+  line-height: 1.6em;
 }
