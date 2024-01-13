@@ -92,14 +92,14 @@ main {
 }
 
 .movieInfo-main::after {
-  /* 가상 클래스 - 이미지 음영 */
+  /* 가상 클래스 - 배경이미지 어둡게 */
   content: "";
   position: absolute;
   top: 87px; /* %든 px이든 페이지크기따라 고정은안됨 */
   left: 0.4%;
   width: 100%;
   height: 710px;
-  background-color: rgba(0, 0, 0, 0.888);
+  background-color: rgba(0, 0, 0, 0.815);
 }
 
 .movieInfo-main * {
@@ -111,10 +111,11 @@ main {
 }
 
 .movieInfo-box img {
-  width: 400px;
-  height: 550px;
-  border-radius: 7px;
+  width: 330px;
+  height: 480px;
   margin: 80px;
+  border-radius: 7px;
+  box-shadow: rebeccapurple 0px 1px 0px, rebeccapurple 0px 0px 8px;
 }
 
 .movieInfo-detail-box {
@@ -129,18 +130,18 @@ main {
 }
 
 .movieInfo-Ktitle {
-  font-size: 40px;
+  font-size: 35px;
   color: white;
 }
 
 .movieInfo-Otitle {
-  font-size: 18px;
+  font-size: 17px;
   margin-top: -20px;
 }
 
 .movieInfo-detail-box p {
   color: white;
-  font-size: 20px;
+  font-size: 19px;
   width: 70%;
   margin-top: 50px;
   line-height: 1.6em;
