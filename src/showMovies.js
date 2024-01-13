@@ -15,17 +15,7 @@ export const generateMovieList = async (category) => {
     )
     .join("");
 
-  //   const movieItem = document.querySelectorAll(".movie-item");
-  //   movieItem.forEach((movieitem) =>
-  //     movieitem.addEventListener("click", () => {
-  //         movies.map(
-  //         (movie) => localStorage.setItem("movie_id", ${movie.id});
-  //         )
-
-  // );
-
-  // 영화 클릭 시 info.html(상세페이지)로 넘어가기, 영g화id 데이터 전달하기
-  // 시도 중
+  // 영화 클릭 시 info.html(상세페이지)로 넘어가기, 영화id 데이터 전달하기
   const movieItem = document.querySelectorAll(".movie-item");
   movieItem.forEach((movie) =>
     movie.addEventListener("click", (event) => {
@@ -52,8 +42,6 @@ export const generateMovieList = async (category) => {
       // PointerEvent {key:value}로 이뤄진 객체, target 이라는 key - 눌린 태그 (img,p등) 혹은 div 가 있음
     })
   );
-
-  //
 
   // $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
   //   // 영화 클릭 시 제목 & ID alert 출력
