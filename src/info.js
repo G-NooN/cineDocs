@@ -72,3 +72,13 @@ async function fetchMovieDetailsData(movie_id) {
 
   return movie_data; // 이 객체는 results 키 없음 주의
 }
+
+// 상단 메뉴 href
+const popular = document.querySelector("#popular");
+popular.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
+const topRated = document.querySelector("#top-rated");
+topRated.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
