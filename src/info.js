@@ -27,7 +27,7 @@ const generateMovieInfo = async (movie_id) => {
 
   // head태그의 title (페이지, 탭 제목) : 영화 제목과 개봉연도, 사이트제목 뜨게 하기
   const movieHeadTitle = document.querySelector("title");
-  let movieYear = movie.release_date.substring(0, 4);
+  let movieYear = movie.release_date.slice(0, 4);
 
   movieHeadTitle.innerHTML = `${movie.title} (${movieYear}) ─ CinéDocs`;
 };
