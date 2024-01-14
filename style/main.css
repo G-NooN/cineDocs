@@ -1,3 +1,4 @@
+/* 전체 */
 /* 폰트 지정 */
 :root {
   font-family: "NanumSquare", "NanumSquareBold", "NanumSquareLight",
@@ -50,6 +51,13 @@
   font-size: 48px;
 }
 
+button,
+input,
+textarea,
+.comment-box {
+  border-radius: 3px;
+}
+
 /* 상단 메뉴 */
 header {
   height: 30px;
@@ -70,7 +78,7 @@ header {
   align-items: center;
 }
 
-/* 메인 화면 */
+/* 메인 페이지 */
 main {
   display: flex;
 }
@@ -88,6 +96,7 @@ main {
   transform: scale(1.05);
 }
 
+/* 검색창 */
 #search {
   cursor: pointer;
   transition: transform 100ms ease-in;
@@ -98,12 +107,12 @@ main {
   transform: scale(1.05);
 }
 
-/* 검색창 */
+/* 검색 form */
 #search-form {
   display: flex;
   align-items: baseline;
 }
-
+/* 입력 창 */
 #search-text {
   padding: 0 10px;
   margin: 10px 0;
@@ -121,9 +130,16 @@ main {
 }
 
 /* 전체 배경 */
-.wrapper {
+.wrapper-index {
   background-color: black;
   color: #f4efea;
+  min-height: 5570px;
+}
+
+.wrapper-info {
+  background-color: black;
+  color: #f4efea;
+  min-height: 2200px;
 }
 
 /* 영화 리스트 */
@@ -197,12 +213,19 @@ main {
 }
 
 /* 상세페이지 - 메인 섹션 */
+.movieInfo-section {
+  display: flex;
+  flex-direction: column;
+}
+
 .movieInfo-main {
-  width: 1519px; /* 100%나 100vw하면 삐져나오므로 px주기 */
-  height: 710px; /* 100%이렇게쓰면 높이가  p태그에맞춰서 조정됨 */
+  /* width: 1519px; 100%나 100vw하면 삐져나오므로 px주었으나, 창크기따라 이미지사이즈 더 작아지는 문제 발생 ->
+  아예 width를 안주니 해결 but, '오펜하이머' 등의 몇 영화 페이지에서 잘리는 현상 발생 ->
+  어쩔수없이 몇 영화에서 창크기따라 이미지사이즈는 더 작아질 수 있어도 우선 최소가로길이를 줌 */
+  min-width: 1519px;
+  height: 650px; /* 100%로 쓰면 높이가  p태그에맞춰서 조정됨 */
   background-size: cover;
   background-repeat: no-repeat;
-  /* font-family: "NanumSquare", "NanumSquareBold"; */
   color: white;
 }
 
@@ -211,8 +234,8 @@ main {
   content: "";
   position: absolute;
   top: 90px; /* %든 px이든 페이지크기따라 고정은안됨 */
-  width: 1519px;
-  height: 710px;
+  width: 100%;
+  height: 650px;
   background-color: rgba(0, 0, 0, 0.815);
 }
 
@@ -274,4 +297,212 @@ main {
   width: 70%;
   margin-top: 20px;
   line-height: 1.6em;
+}
+
+/* 상세페이지 - 리뷰 UI */
+.review-box {
+  background-color: #131212f6;
+  box-shadow: #3a3938 1px 1px 0px, #9a161f 5px 5px 2px;
+  width: 80%;
+  /*border: 1px solid #9a161f;*/
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  margin-left: 10%;
+  margin-bottom: 50px;
+}
+
+.review-header {
+  display: flex;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.fa-comments {
+  font-size: 50px;
+}
+
+.review-title {
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.review-comment-formlist {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.fa-user-pen {
+  font-size: 18px;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.user-info,
+.comment-area,
+.comment-box {
+  margin-top: 10px;
+}
+
+.comment-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#user-name,
+#user-password,
+#comment,
+#submit-btn {
+  padding: 10px;
+  font-size: 15px;
+}
+
+.user-info {
+  margin-bottom: 10px;
+}
+
+#user-name {
+  margin-left: 88px;
+}
+
+#user-password {
+  margin-left: 20px;
+}
+
+#comment {
+  width: 700px;
+  height: 90px;
+  resize: none;
+}
+
+#submit-btn {
+  width: 75px;
+  height: 40px;
+  margin-left: 30px;
+  font-weight: bold;
+  background-color: #9a161f;
+  color: #f4efea;
+}
+
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 10px;
+  width: 80%;
+  margin-left: 3%;
+}
+
+#comment-list {
+  /*margin-top: 5px;*/
+  /*margin-bottom: 100px;*/
+  margin: 10px 0px 100px 100px;
+}
+
+.comment-box,
+.comment-data {
+  padding: 10px;
+}
+
+.comment-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* margin: 100 30 10px; */
+  margin-top: 5px;
+
+  /* border: 1px solid #9a161f; */
+  background-color: black;
+}
+
+.comment-header {
+  display: flex;
+}
+
+.comment-name {
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.comment-contents {
+  margin: 10px;
+  font-size: 17px;
+}
+
+button,
+#user-name,
+#user-password,
+#comment {
+  /*버튼들 및 input태그에 폰트적용 안 되어 따로 적용*/
+  font-family: "NanumSquare", "NanumSquareBold";
+  font-size: 15px;
+}
+
+#control-btn > button {
+  float: right;
+  margin: 5px;
+}
+
+.confirmPassword {
+  padding: 5px;
+}
+
+#deleteCommentBtn {
+  margin-left: 5px;
+  background-color: #9a161f;
+  color: #fff;
+  font-size: 15px;
+  width: 50px;
+  height: 27px;
+}
+
+#editCommentBtn {
+  margin-left: 5px;
+  background-color: #f4efea;
+  font-size: 15px;
+  width: 50px;
+  height: 27px;
+}
+
+.passwordInputForm {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
+}
+
+#confirmPassword {
+  padding: 2px;
+}
+
+#confirmButtons {
+  display: inline-block;
+  margin-left: 6px;
+}
+
+/* 메인,상세페이지의 footer */
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  line-height: 1.5em;
+  color: #777;
 }

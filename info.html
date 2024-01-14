@@ -18,12 +18,16 @@
     />
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/main.css" />
-    <link rel="stylesheet" href="./style/review.css" />
+    <script type="module" src="./src/review.js"></script>
     <script type="module" src="./src/info.js"></script>
     <script type="module" src="./src/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/5074a2f31d.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper-info">
       <header>
         <div class="header">
           <div class="left-menu">
@@ -49,7 +53,7 @@
         </div>
       </header>
       <main>
-        <section>
+        <section class="movieInfo-section">
           <!-- 영화 정보 section -->
           <div class="movieInfo-main">
             <!--이 div 전체에 backdrop path 이미지로 뒷배경-->
@@ -57,31 +61,50 @@
           </div>
           <!-- 영화 리뷰 section -->
           <div class="review-box">
-            <form id="comment-form">
-              <div class="user-info">
-                <input type="text" id="username" placeholder="이름" required />
-                <input
-                  type="password"
-                  id="user-password"
-                  placeholder="비밀번호"
-                  required
-                />
-              </div>
-              <div class="comment-area">
-                <textarea
-                  id="comment"
-                  placeholder="리뷰를 입력하세요."
-                  required
-                ></textarea>
-                <button type="button" id="submit-btn" onclick="saveComment()">
-                  등록
-                </button>
-              </div>
-            </form>
-            <div id="comment-list"></div>
+            <div class="review-header">
+              <i class="fa-solid fa-comments"></i>
+              <h1 class="review-title">Review</h1>
+            </div>
+            <div class="review-comment-formlist">
+              <form id="comment-form">
+                <div class="user-info">
+                  <input
+                    type="text"
+                    id="user-name"
+                    placeholder="이름"
+                    required
+                  />
+                  <input
+                    type="password"
+                    id="user-password"
+                    placeholder="비밀번호"
+                    required
+                  />
+                </div>
+                <div class="comment-area">
+                  <textarea
+                    id="comment"
+                    placeholder="리뷰를 입력하세요."
+                    required
+                  ></textarea>
+                  <button type="button" id="submit-btn">
+                    등록 <i class="fa-solid fa-pen"></i>
+                  </button>
+                </div>
+              </form>
+              <div id="comment-list"></div>
+            </div>
           </div>
         </section>
       </main>
+      <!-- 하단 메뉴 -->
+      <footer>
+        <p>
+          주식회사 : 씨네닥스(CinéDocs) │ 대표 : 3조 '각개전투'
+          (조진훈ㆍ양유진ㆍ서혜련)
+        </p>
+        <p>Copyright © 2024 by CinéDocs, Inc. All rights reserved.</p>
+      </footer>
     </div>
   </body>
 </html>
