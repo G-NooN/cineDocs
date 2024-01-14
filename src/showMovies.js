@@ -8,7 +8,7 @@ export const generateMovieList = async (category) => {
       (movie) => `
   <div class="movie-item" id="${movie.id}">
     <img src="https://image.tmdb.org/t/p/w185${movie.poster_path}" alt="${movie.title}">
-    <h2class="movie-title">${movie.title}</h2>
+    <h2 class="movie-title">${movie.title}</h2>
     <span class="movie-original-title">(${movie.original_title})</span>
     <p class="movie-item-info"><strong>개봉일</strong> : ${movie.release_date} / <strong>평점</strong> : ${movie.vote_average}</p>
     <p class="movieMain-overview">${movie.overview}</p>
