@@ -26,15 +26,110 @@
             placeholder="리뷰를 입력하세요."
             required
           ></textarea>
-          <button type="button" id="submit-btn" onclick="saveComment()">
-            등록
-          </button>
+          <button type="button" id="submit-btn">등록</button>
         </div>
       </form>
       <div id="comment-list"></div>
     </div>
   </body>
   <script>
+    displayComments();
+    //등록 버튼
+    document
+      .getElementById('submit-btn')
+      .addEventListener('click', saveComment);
+    //수정 버튼
+    document
+      .getElementById('comment-list')
+      .addEventListener('click', function (event) {
+        const target = event.target;
+        if (
+          target.tagName === 'BUTTON' &&
+          target.classList.contains('editCommentBtn')
+        ) {
+          const index = target.getAttribute('data-index');
+          editComment(index);
+        }
+      });
+    //삭제 버튼
+    document
+      .getElementById('comment-list')
+      .addEventListener('click', function (event) {
+        const target = event.target;
+        if (
+          target.tagName === 'BUTTON' &&
+          target.classList.contains('deleteCommentBtn')
+        ) {
+          const index = target.getAttribute('data-index');
+          deleteComment(index);
+        }
+      });
+    //비밀번호 확인 버튼(삭제)
+    document
+      .getElementById('comment-list')
+      .addEventListener('click', function (event) {
+        const target = event.target;
+        if (
+          target.tagName === 'BUTTON' &&
+          target.classList.contains('checkPasswordBtn')
+        ) {
+          const index = target.getAttribute('data-index');
+          checkPasswordDelete(index);
+        }
+      });
+    //취소 버튼
+    document
+      .getElementById('comment-list')
+      .addEventListener('click', function (event) {
+        const target = event.target;
+        if (
+          target.tagName === 'BUTTON' &&
+          target.classList.contains('cancelEditBtn')
+        ) {
+          const index = target.getAttribute('data-index');
+          getOriginComment(index);
+        }
+      });
+    //비밀번호 확인 버튼(수정)
+    document
+      .getElementById('comment-list')
+      .addEventListener('click', function (event) {
+        const target = event.target;
+        if (
+          target.tagName === 'BUTTON' &&
+          target.classList.contains('checkPasswordEdit')
+        ) {
+          const index = target.getAttribute('data-index');
+          checkPasswordEdit(index);
+        }
+      });
+    //수정 완료 버튼
+    document
+      .getElementById('comment-list')
+      .addEventListener('click', function (event) {
+        const target = event.target;
+        if (
+          target.tagName === 'BUTTON' &&
+          target.classList.contains('confirmEdit')
+        ) {
+          const index = target.getAttribute('data-index');
+          confirmEdit(index);
+        }
+      });
+    //취소 버튼(원래 리뷰 보이기)
+    document
+      .getElementById('comment-list')
+      .addEventListener('click', function (event) {
+        const target = event.target;
+        if (
+          target.tagName === 'BUTTON' &&
+          target.classList.contains('displayCommentResults')
+        ) {
+          const index = target.getAttribute('data-index');
+          displayCommentResults(index);
+        }
+      });
+
     function saveComment() {
       const name = document.querySelector('#username').value;
       const password = document.querySelector('#user-password').value;
@@ -121,8 +216,8 @@
             <p class="comment-contents">${comment.commentText}</p>
           </div>
           <div class="control-btn" id="control-btn">
-            <button onclick="editComment(${index})" id="editCommentBtn">수정</button>
-            <button onclick="deleteComment(${index})" id="deleteCommentBtn">삭제</button>
+            <button type="button" data-index="${index}" class="editCommentBtn">수정</button>
+            <button type="button" data-index="${index}" class="deleteCommentBtn" id="deleteCommentBtn">삭제</button>
           </div>
         </div>`;
 
@@ -143,9 +238,8 @@
         <div class="passwordInputForm" id="passwordInputForm">
           <input type="password" id="confirmPassword" placeholder="비밀번호 입력" required/>
           <div id="confirmButtons">
-          <button type="button" onclick="checkPasswordDelete(${index})">확인</button>
-          <button type="button" id="cancelEditBtn"
-          onclick="getOriginComment(${index})">취소</button>
+            <button type="button" data-index="${index}" class="checkPasswordBtn" id="checkPasswordBtn">확인</button>
+            <button type="button" data-index="${index}" class="cancelEditBtn" id="cancelEditBtn">취소</button>
           </div>
           </div>
         `;
@@ -239,8 +333,8 @@
         <p class="comment-contents">${comment.commentText}</p>
       </div>
       <div class="control-btn" id="control-btn">
-        <button onclick="editComment(${index})" id="editCommentBtn">수정</button>
-        <button onclick="deleteComment(${index})" id="deleteCommentBtn">삭제</button>
+        <button type="button" data-index="${index}" class="editCommentBtn">수정</button>
+        <button data-index="${index}" class="deleteCommentBtn" id="deleteCommentBtn">삭제</button>
       </div>
     </div>`;
 
@@ -260,9 +354,8 @@
         <div class="passwordInputForm" id="passwordInputForm">
           <input type="password" id="confirmPassword" placeholder="비밀번호 입력" required/>
           <div id="confirmButtons">
-          <button type="button" onclick="checkPasswordEdit(${index})">확인</button>
-          <button type="button" id="cancelEditBtn"
-          onclick="getOriginComment(${index})">취소</button>
+            <button type="button" data-index="${index}" class="checkPasswordEdit" id="checkPasswordEdit">확인</button>
+            <button type="button" data-index="${index}" class="cancelEditBtn" id="cancelEditBtn">취소</button>
           </div>
           </div>
         `;
@@ -298,8 +391,8 @@
           >${comment.commentText}</textarea>
         </div>
           <div class="editComfirmButtons" id="editComfirmButtons">
-          <input type="button" value="수정 완료" onclick="confirmEdit(${index})">
-          <input type="button" value="취소" onclick="displayCommentResults(${index})"></button>
+            <button type="button" data-index="${index}" class="confirmEdit">수정 완료</button>
+            <button type="button" data-index="${index}" class="displayCommentResults">취소</button>
           </div>
         </div>
       `;
@@ -339,9 +432,9 @@
       if (editedCommentText.length > maxLength) {
         alert('리뷰는 15자 이하여야 합니다.');
         setTimeout(function () {
-          const inputText = document.getElementById('comment');
-          if (inputText) {
-            inputText.focus();
+          const editedCommentt = document.getElementById('comment');
+          if (editedComment) {
+            editedComment.focus();
           }
         });
         return;

@@ -125,7 +125,6 @@
   border: 1px solid #777;
 
   width: 900px;
-  position: relative;
 }
 
 .editCommentForm {
@@ -146,11 +145,12 @@
 
 #editComfirmButtons {
   margin-bottom: 10px;
+  justify-content: flex-end;
 }
 
 #editComfirmButtons > button {
-  margin-top: auto;
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
+  display: inline-block;
+
+  margin-bottom: 5px;
 }
