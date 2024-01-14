@@ -115,3 +115,42 @@
   display: inline-block;
   margin-left: 6px;
 }
+
+.editForm-Box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 50px;
+  border: 1px solid #777;
+
+  width: 900px;
+  position: relative;
+}
+
+.editCommentForm {
+  padding: 10px;
+}
+
+.editCommentForm,
+.comment-name {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#editedComment {
+  width: 600px;
+  height: 90px;
+  resize: none;
+}
+
+#editComfirmButtons {
+  margin-bottom: 10px;
+}
+
+#editComfirmButtons > button {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}

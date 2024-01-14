@@ -145,7 +145,7 @@
           <div id="confirmButtons">
           <button type="button" onclick="checkPasswordDelete(${index})">확인</button>
           <button type="button" id="cancelEditBtn"
-          onclick="cancelEdit(${index})">취소</button>
+          onclick="getOriginComment(${index})">취소</button>
           </div>
           </div>
         `;
@@ -195,7 +195,7 @@
     }
 
     //삭제 취소버튼 누를시 실행되는 함수.
-    function cancelEdit(index) {
+    function getOriginComment(index) {
       const commentList =
         JSON.parse(localStorage.getItem('comment-list')) || [];
 
@@ -210,16 +210,16 @@
       const cancelEditBtn = document.getElementById('cancelEditBtn');
       if (cancelEditBtn) {
         cancelEditBtn.removeEventListener('click', function () {
-          cancelEdit(index);
+          getOriginComment(index);
         });
       } //cancelEditBtn이 존재한다면, 이전에(삭제버튼을 눌렀을 때) 등록된 이벤트 리스너를 제거한다.
 
-      canceledComment(index);
+      displayCommentResults(index);
       //해당 인덱스에 있는 댓글을 다시 표시
     }
 
     //삭제 버튼을 누르기 전, 수정, 삭제 버튼이 있는 리뷰를 보여준다.
-    function canceledComment(index) {
+    function displayCommentResults(index) {
       const commentBox = document.getElementById('comment-list');
       const commentList =
         JSON.parse(localStorage.getItem('comment-list')) || [];
@@ -246,10 +246,115 @@
 
       commentBox.replaceChild(newComment, commentBox.children[index]);
     }
-    //삭제 버튼을 눌러 비밀번호 input과 확인, 취소 버튼을 만들때 passwordInput 요소들이 수정, 삭제 버튼을 포함한 buttonsContainer 자리를 대신했기 때문에, 취소 버튼을 눌렀을때 passwordInput이 만들어지기 전의 buttonsContainer이 있던 리뷰의 모습을 다시 불러오기 위해서 리뷰를 다시 만들었다.
+
+    //리뷰 수정
+    function editComment(index) {
+      const commentList =
+        JSON.parse(localStorage.getItem('comment-list')) || [];
+      const comment = commentList[index];
+
+      const commentBox = document.getElementById('comment-list');
+
+      const passwordInput = document.createElement('div');
+      passwordInput.innerHTML = `
+        <div class="passwordInputForm" id="passwordInputForm">
+          <input type="password" id="confirmPassword" placeholder="비밀번호 입력" required/>
+          <div id="confirmButtons">
+          <button type="button" onclick="checkPasswordEdit(${index})">확인</button>
+          <button type="button" id="cancelEditBtn"
+          onclick="getOriginComment(${index})">취소</button>
+          </div>
+          </div>
+        `;
+
+      const passwordInputId = `passwordInput_${index}`;
+
+      const makePasswordInput = document.getElementById(passwordInputId);
+      if (makePasswordInput) {
+        commentBox.replaceChild(passwordInput, makePasswordInput);
+      } else {
+        const buttonsContainer =
+          commentBox.children[index].querySelector('#control-btn');
+        buttonsContainer.replaceWith(passwordInput);
+      }
+    }
+
+    //비밀번호 확인 후 수정
+    function checkPasswordEdit(index) {
+      const commentList =
+        JSON.parse(localStorage.getItem('comment-list')) || [];
+      const comment = commentList[index];
+      const enteredPassword = document.getElementById('confirmPassword').value;
+
+      if (enteredPassword === comment.password) {
+        const editForm = document.createElement('div');
+        editForm.className = 'editForm-item';
+        editForm.innerHTML = `
+        <div class="editForm-Box">
+          <div class="editCommentForm">
+          <p class="comment-name">${comment.name}</p>
+          <textarea
+            id="editedComment"
+          >${comment.commentText}</textarea>
+        </div>
+          <div class="editComfirmButtons" id="editComfirmButtons">
+          <input type="button" value="수정 완료" onclick="confirmEdit(${index})">
+          <input type="button" value="취소" onclick="displayCommentResults(${index})"></button>
+          </div>
+        </div>
+      `;
+        const commentContainer = document.getElementById('comment-list');
+        commentContainer.replaceChild(
+          editForm,
+          commentContainer.children[index]
+        );
+      } else if (enteredPassword === '') {
+        alert('비밀번호를 입력해주세요.');
+        setTimeout(function () {
+          const inputText = document.getElementById('confirmPassword');
+          if (inputText) {
+            inputText.focus();
+          }
+        });
+      } else {
+        alert('비밀번호가 틀렸습니다.');
+        setTimeout(function () {
+          const inputText = document.getElementById('confirmPassword');
+          if (inputText) {
+            inputText.focus();
+          }
+        });
+      }
+    }
+
+    //수정된 내용으로 리뷰 저장, 표시
+    function confirmEdit(index) {
+      const commentList =
+        JSON.parse(localStorage.getItem('comment-list')) || [];
+      const comment = commentList[index];
+
+      const editedCommentText = document.getElementById('editedComment').value;
+
+      const maxLength = 15;
+      if (editedCommentText.length > maxLength) {
+        alert('리뷰는 15자 이하여야 합니다.');
+        setTimeout(function () {
+          const inputText = document.getElementById('comment');
+          if (inputText) {
+            inputText.focus();
+          }
+        });
+        return;
+      }
+
+      comment.commentText = editedCommentText;
+
+      localStorage.setItem('comment-list', JSON.stringify(commentList));
+
+      alert('수정이 완료되었습니다.');
+      getOriginComment(index);
+    }
 
     displayComments();
-
-    // window.localStorage.clear();
   </script>
 </html>
