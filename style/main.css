@@ -1,8 +1,8 @@
 /* 전체 */
 /* 폰트 지정 */
 :root {
-  font-family: "NanumSquare", "NanumSquareBold", "NanumSquareLight", "NanumSquareAcb",
-    "NanumSquareAcr", "NanumSquareAcl";
+  font-family: "NanumSquare", "NanumSquareBold", "NanumSquareAcb", "NanumSquareAcr",
+    "NanumSquareAcl";
 }
 
 /* 아이콘 */
@@ -281,7 +281,7 @@ main {
   justify-content: center;
 
   margin-top: 20px;
-  margin-left: 20%;
+  margin-left: 100px;
   border: 1px solid white;
   border-radius: 5px;
   /* background-color: ; */
