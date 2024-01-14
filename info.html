@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="./style/main.css" />
     <link rel="stylesheet" href="./style/review.css" />
+    <script type="module" src="./src/review.js"></script>
     <script type="module" src="./src/info.js"></script>
     <script type="module" src="./src/main.js"></script>
   </head>
@@ -37,38 +38,18 @@
           <!-- 영화 정보 section -->
           <div class="movieInfo-main">
             <!--이 div 전체에 backdrop path 이미지로 뒷배경-->
-            <div class="movieInfo-box">
-              <!-- <img
-                src="https://image.tmdb.org/t/p/original/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg"
-                alt="The Hunger Games: The Ballad of Songbirds & Snakes"
-              />
-              <div class="movieInfo-detail-box">
-                <h1 class="movieInfo-Ktitle">
-                  헝거게임: 노래하는 새와 뱀의 발라드
-                </h1>
-                <span class="movieInfo-Otitle">
-                  (The Hunger Games: The Ballad of Songbirds & Snakes)
-                </span>
-                <p>
-                  반란의 불씨를 잠재우기 위해 시작된 잔인한 서바이벌 헝거게임.
-                  헝거게임 10회를 맞아 ‘멘토제’가 도입되고 ‘스노우’는 12구역의
-                  소녀 ‘루시 그레이’의 멘토가 된다. 그는 몰락한 가문의 영광을
-                  되찾기 위해 ‘루시 그레이’를 헝거게임에서 우승 시키려 수단과
-                  방법을 가리지 않는데…
-                </p>
-              </div> -->
-            </div>
+            <div class="movieInfo-box"></div>
           </div>
           <!-- 영화 리뷰 section -->
           <div class="review-box">
             <form id="comment-form">
               <div class="user-info">
-                <input type="text" id="username" placeholder="이름" required />
+                <input type="text" id="user-name" placeholder="이름" required />
                 <input type="password" id="user-password" placeholder="비밀번호" required />
               </div>
               <div class="comment-area">
                 <textarea id="comment" placeholder="리뷰를 입력하세요." required></textarea>
-                <button type="button" id="submit-btn" onclick="saveComment()">등록</button>
+                <button type="button" id="submit-btn">등록</button>
               </div>
             </form>
             <div id="comment-list"></div>
