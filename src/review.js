@@ -1,7 +1,29 @@
-const submitBtn = document.querySelector("#submit-btn");
-const commentList = JSON.parse(localStorage.getItem("comment-list")) || [];
+const comments = JSON.parse(localStorage.getItem("comments")) || [];
 
+const submitBtn = document.querySelector("#submit-btn");
 submitBtn.addEventListener("click", saveComment);
+
+const commentList = document.querySelector("#comment-list");
+
+commentList.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.tagName === "BUTTON") {
+    const index = target.getAttribute("data-index");
+    if (target.classList.contains("editCommentBtn")) {
+      editComment(index);
+    } else if (target.classList.contains("deleteCommentBtn")) {
+      deleteComment(index);
+    } else if (target.classList.contains("checkPasswordBtn")) {
+      checkPasswordDelete(index);
+    } else if (target.classList.contains("cancelEditBtn")) {
+      getOriginComment(index);
+    } else if (target.classList.contains("checkPasswordEdit")) {
+      checkPasswordEdit(index);
+    } else if (target.classList.contains("displayCommentResults")) {
+      displayCommentResults(index);
+    }
+  }
+});
 
 // 리뷰 저장
 function saveComment() {
@@ -49,8 +71,8 @@ function saveComment() {
     commentText: commentText.value,
   };
 
-  commentList.unshift(comment);
-  localStorage.setItem("comment-list", JSON.stringify(commentList));
+  comments.unshift(comment);
+  localStorage.setItem("comments", JSON.stringify(comments));
 
   alert("리뷰가 등록되었습니다.");
 
@@ -67,7 +89,7 @@ function displayComments() {
   const commentBox = document.querySelector("#comment-list");
   commentBox.innerHTML = "";
 
-  commentList.forEach((comment, index) => {
+  comments.forEach((comment, index) => {
     const newComment = document.createElement("div");
     newComment.className = "comment-item";
     newComment.innerHTML = `
@@ -77,8 +99,8 @@ function displayComments() {
             <p class="comment-contents">${comment.commentText}</p>
           </div>
           <div id="control-btn">
-            <button onclick="editComment(${index})" id="editCommentBtn">수정</button>
-            <button onclick="deleteComment(${index})" id="deleteCommentBtn">삭제</button>
+            <button type="button" data-index="${index}" class="editCommentBtn">수정</button>
+            <button type="button" data-index="${index}" class="deleteCommentBtn" id="deleteCommentBtn">삭제</button>
           </div>
         </div>`;
     commentBox.appendChild(newComment);
@@ -87,7 +109,7 @@ function displayComments() {
 
 // 리뷰 삭제
 function deleteComment(index) {
-  const commentIndex = commentList[index]; //배열 commentList에서 특정 index에 위치한 요소를 가져와 comment라는 변수에 할당하였다.
+  const commentIndex = comments[index]; //배열 commentList에서 특정 index에 위치한 요소를 가져와 comment라는 변수에 할당하였다.
 
   const commentBox = document.getElementById("comment-list");
 
@@ -96,8 +118,8 @@ function deleteComment(index) {
       <div class="passwordInputForm" id="passwordInputForm">
         <input type="password" id="confirmPassword" placeholder="비밀번호 입력" required/>
         <div id="confirmButtons">
-          <button type="button" onclick="checkPasswordDelete(${index})">확인</button>
-          <button type="button" id="cancelEditBtn" onclick="cancelEdit(${index})">취소</button>
+          <button type="button" data-index="${index}" class="checkPasswordBtn">확인</button>
+          <button type="button" data-index="${index}" class="cancelEditBtn" id="cancelEditBtn">취소</button>
         </div>
       </div>`;
 
@@ -114,14 +136,14 @@ function deleteComment(index) {
 
 // 삭제 시 비밀번호 확인
 function checkPasswordDelete(index) {
-  const commentIndex = commentList[index];
+  const commentIndex = comments[index];
   const enteredPassword = document.getElementById("confirmPassword");
 
   // 비밀번호가 일치하는 경우
   if (enteredPassword.value === commentIndex.password) {
-    commentList.splice(index, 1); // 해당 인덱스를 가진 리뷰를 1개만 삭제한다. 1이라는 숫자를 넣어주지 않으면 해당 인덱스를 가진 리뷰를 포함해 먼저 작성된 리뷰들이 전부 삭제된다.
-    localStorage.removeItem("comment-list");
-    localStorage.setItem("comment-list", JSON.stringify(commentList)); // 업데이트된 commentList를 다시 저장한다.
+    comments.splice(index, 1); // 해당 인덱스를 가진 리뷰를 1개만 삭제한다. 1이라는 숫자를 넣어주지 않으면 해당 인덱스를 가진 리뷰를 포함해 먼저 작성된 리뷰들이 전부 삭제된다.
+    localStorage.removeItem("comments");
+    localStorage.setItem("comments", JSON.stringify(comments)); // 업데이트된 commentList를 다시 저장한다.
 
     alert("리뷰가 삭제되었습니다.");
 
@@ -142,13 +164,13 @@ function checkPasswordDelete(index) {
 }
 
 // 삭제 취소버튼 누를시 실행되는 함수.
-function cancelEdit(index) {
+function getOriginComment(index) {
   //주어진 index가 유효한 범위에 있는지 확인.
-  if (index < 0 || index >= commentList.length) {
+  if (index < 0 || index >= comments.length) {
     return;
   }
   //주어진 index에 해당하는 댓글 가져오기
-  const commentIndex = commentList[index];
+  const commentIndex = comments[index];
 
   const commentBox = document.getElementById("comment-list");
 
@@ -156,24 +178,24 @@ function cancelEdit(index) {
   const cancelEditBtn = document.getElementById("cancelEditBtn");
   if (cancelEditBtn) {
     cancelEditBtn.removeEventListener("click", function () {
-      cancelEdit(index);
+      getOriginComment(index);
     });
   }
 
   // 해당 인덱스에 있는 댓글을 다시 표시
-  canceledComment(index);
+  displayCommentResults(index);
 }
 
 // 삭제 버튼을 누르기 전, 수정, 삭제 버튼이 있는 리뷰를 보여준다.
-function canceledComment(index) {
+function displayCommentResults(index) {
   const commentBox = document.getElementById("comment-list");
 
   // index가 유효한 범위에 있는지 확인
-  if (index < 0 || index >= commentList.length) {
+  if (index < 0 || index >= comments.length) {
     return;
   }
 
-  const commentIndex = commentList[index];
+  const commentIndex = comments[index];
 
   const newComment = document.createElement("div");
   newComment.className = "comment-item";
@@ -184,8 +206,8 @@ function canceledComment(index) {
         <p class="comment-contents">${commentIndex.commentText}</p>
       </div>
       <div id="control-btn">
-        <button onclick="editComment(${index})" id="editCommentBtn">수정</button>
-        <button onclick="deleteComment(${index})" id="deleteCommentBtn">삭제</button>
+        <button type="button" data-index="${index}" class="editCommentBtn">수정</button>
+        <button type="button" data-index="${index}" class="deleteCommentBtn">삭제</button>
       </div>
     </div>`;
 
