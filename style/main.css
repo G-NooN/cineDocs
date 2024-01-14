@@ -1,6 +1,7 @@
 /* 폰트 지정 */
 :root {
-  font-family: "NanumSquare", "NanumSquareBold";
+  font-family: "NanumSquare", "NanumSquareBold", "NanumSquareLight",
+    "NanumSquareAcb", "NanumSquareAcr", "NanumSquareAcl";
 }
 
 /* 아이콘 */
@@ -51,9 +52,10 @@
 
 /* 상단 메뉴 */
 header {
-  background-color: rgba(0, 0, 0, 0.888);
+  height: 30px;
+  background-color: #9a161f;
   color: white;
-  padding: 0px 100px;
+  padding: 30px 100px;
 }
 
 .header {
@@ -75,6 +77,8 @@ main {
 
 /* 제목(로고) */
 .title {
+  font-size: 40px;
+  font-weight: bold;
   letter-spacing: 3px;
   font-family: "Courier New", Courier, monospace;
   cursor: pointer;
@@ -90,7 +94,7 @@ main {
 }
 
 #search:hover {
-  color: red;
+  color: #131212f6;
   transform: scale(1.05);
 }
 
@@ -112,6 +116,16 @@ main {
   height: 40px;
 }
 
+#searchBtnStatus {
+  margin-left: 3px;
+}
+
+/* 전체 배경 */
+.wrapper {
+  background-color: black;
+  color: #f4efea;
+}
+
 /* 영화 리스트 */
 #movie-list {
   display: grid;
@@ -123,7 +137,7 @@ main {
 
 /* 각 영화 */
 .movie-item {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+  box-shadow: #f4efea 0.5px 1px 2px 0px;
   margin: 20px;
   padding: 20px;
   justify-self: center;
@@ -132,6 +146,7 @@ main {
   user-select: none;
   transition: transform 100ms ease-in;
   line-height: 1.6em;
+  background-color: #131212f6;
 }
 
 .movie-item:hover {
@@ -144,29 +159,46 @@ main {
 }
 
 .movie-title {
-  line-height: 1.6em;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 1.3em;
+  margin-top: 15px;
+  margin-bottom: 3px;
+}
+
+.movie-original-title {
+  font-size: 18px;
+  line-height: 1.3em;
+  /* margin-top: 100px; */
+}
+
+.movie-item-info {
+  /* font-size:
+   */
+  line-height: 3em;
 }
 
 /* 카테고리 */
 .sort-list {
   display: flex;
   list-style: none;
+  margin-left: 50px;
 }
 
 .sort-list li {
   padding: 10px;
+  margin-left: 20px;
   transition: transform 100ms ease-in;
 }
 
 .sort-list li:hover {
-  color: red;
   cursor: pointer;
   transform: scale(1.15);
 }
 
 /* 상세페이지 - 메인 섹션 */
 .movieInfo-main {
-  width: 100vw;
+  width: 1519px; /* 100%나 100vw하면 삐져나오므로 px주기 */
   height: 710px; /* 100%이렇게쓰면 높이가  p태그에맞춰서 조정됨 */
   background-size: cover;
   background-repeat: no-repeat;
@@ -178,9 +210,8 @@ main {
   /* 가상 클래스 - 배경이미지 어둡게 */
   content: "";
   position: absolute;
-  top: 87px; /* %든 px이든 페이지크기따라 고정은안됨 */
-  left: 0.4%;
-  width: 100%;
+  top: 90px; /* %든 px이든 페이지크기따라 고정은안됨 */
+  width: 1519px;
   height: 710px;
   background-color: rgba(0, 0, 0, 0.815);
 }
@@ -194,17 +225,18 @@ main {
 }
 
 .movieInfo-box img {
+  /* 상세페이지 영화카드이미지 */
   width: 330px;
   height: 480px;
   margin: 80px;
   border-radius: 7px;
-  box-shadow: rebeccapurple 0px 1px 0px, rebeccapurple 0px 0px 8px;
+  box-shadow: #3a3938 1px 1px 0px, #9a161f 1px 1px 2px;
 }
 
 .movieInfo-detail-box {
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
+  padding-top: 110px;
 }
 
 .movieInfo-Ktitle,
@@ -212,20 +244,34 @@ main {
   font-family: "NanumSquare", "NanumSquareBold";
 }
 
-.movieInfo-Ktitle {
+.movieInfo-title {
   font-size: 35px;
   color: white;
 }
 
-.movieInfo-Otitle {
-  font-size: 17px;
-  margin-top: -20px;
+.movieInfo-details {
+  margin-top: 20px;
 }
 
-.movieInfo-detail-box p {
+.movieInfo-vote,
+.movieInfo-runtime {
+  margin-left: 80px;
+}
+
+.quoteSymbol {
+  transform: rotate(180deg);
+}
+
+.movieInfo-tagline {
+  font-size: 23px;
+  margin-top: 50px;
+  font-style: italic;
+}
+
+.movieInfo-overview {
   color: white;
   font-size: 19px;
   width: 70%;
-  margin-top: 50px;
+  margin-top: 20px;
   line-height: 1.6em;
 }

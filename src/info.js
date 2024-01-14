@@ -2,21 +2,37 @@
 const generateMovieInfo = async (movie_id) => {
   const movie = await fetchMovieDetailsData(movie_id); // 받은 movie_id에 해당하는 하나의 영화 detail 정보 객체
 
+  // movieTagline 한글 버전이 없는 경우 (영문버전은 존재) -> 영문버전 데이터에서 가져오기 (시도중)
+  /* if (movie.tagline === "") {
+    const movieTagline = 
+
+  } */
+
   // body 태그 안 영화 상세정보 페이지 메인 구성 - (포스터이미지, 영화 제목, 원제, 개요)
   const movieInfo = document.querySelector(".movieInfo-box");
+  /* movie.genres 가져오기 , movie.status 추가 고려해보기 */
   movieInfo.innerHTML = `
       <img
       src="https://image.tmdb.org/t/p/original${movie.poster_path}"
       alt="${movie.title}"
       />
       <div class="movieInfo-detail-box">
-        <h1 class="movieInfo-Ktitle">
-        ${movie.title}
+        <h1 class="movieInfo-title">
+        ${movie.title} (${movie.original_title})
         </h1>
-        <span class="movieInfo-Otitle">
-        (${movie.original_title})
+        <p class="movieInfo-details">
+        <span class="movieInfo-date">ㆍ 개봉일│${movie.release_date}</span>
+        <span class="movieInfo-vote">ㆍ 평점│${movie.vote_average}</span>
+        <span class="movieInfo-runtime">ㆍ 러닝타임│${movie.runtime}분</span>
+        </p>
+        <pre class="movieInfo-tagline">
+        <span class="material-symbols-outlined quoteSymbol">
+        format_quote
+        </span>  ${movie.tagline}  <span class="material-symbols-outlined">
+        format_quote
         </span>
-        <p>
+        </pre>
+        <p class="movieInfo-overview">
         ${movie.overview}
         </p>
     </div>`;
