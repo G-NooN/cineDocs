@@ -4,7 +4,6 @@ const submitBtn = document.querySelector("#submit-btn");
 submitBtn.addEventListener("click", saveComment);
 
 const commentList = document.querySelector("#comment-list");
-
 commentList.addEventListener("click", (event) => {
   const target = event.target;
   if (target.tagName === "BUTTON") {
@@ -100,7 +99,7 @@ function displayComments() {
           </div>
           <div id="control-btn">
             <button type="button" data-index="${index}" class="editCommentBtn">수정</button>
-            <button type="button" data-index="${index}" class="deleteCommentBtn" id="deleteCommentBtn">삭제</button>
+            <button type="button" data-index="${index}" class="deleteCommentBtn">삭제</button>
           </div>
         </div>`;
     commentBox.appendChild(newComment);
@@ -109,8 +108,6 @@ function displayComments() {
 
 // 리뷰 삭제
 function deleteComment(index) {
-  const commentIndex = comments[index]; //배열 commentList에서 특정 index에 위치한 요소를 가져와 comment라는 변수에 할당하였다.
-
   const commentBox = document.getElementById("comment-list");
 
   const passwordInput = document.createElement("div");
@@ -119,7 +116,7 @@ function deleteComment(index) {
         <input type="password" id="confirmPassword" placeholder="비밀번호 입력" required/>
         <div id="confirmButtons">
           <button type="button" data-index="${index}" class="checkPasswordBtn">확인</button>
-          <button type="button" data-index="${index}" class="cancelEditBtn" id="cancelEditBtn">취소</button>
+          <button type="button" data-index="${index}" class="cancelEditBtn">취소</button>
         </div>
       </div>`;
 
@@ -143,7 +140,7 @@ function checkPasswordDelete(index) {
   if (enteredPassword.value === commentIndex.password) {
     comments.splice(index, 1); // 해당 인덱스를 가진 리뷰를 1개만 삭제한다. 1이라는 숫자를 넣어주지 않으면 해당 인덱스를 가진 리뷰를 포함해 먼저 작성된 리뷰들이 전부 삭제된다.
     localStorage.removeItem("comments");
-    localStorage.setItem("comments", JSON.stringify(comments)); // 업데이트된 commentList를 다시 저장한다.
+    localStorage.setItem("comments", JSON.stringify(comments)); // 업데이트된 comments를 다시 저장한다.
 
     alert("리뷰가 삭제되었습니다.");
 
@@ -169,13 +166,9 @@ function getOriginComment(index) {
   if (index < 0 || index >= comments.length) {
     return;
   }
-  //주어진 index에 해당하는 댓글 가져오기
-  const commentIndex = comments[index];
-
-  const commentBox = document.getElementById("comment-list");
 
   // cancelEditBtn이 존재한다면, 이전에(삭제버튼을 눌렀을 때) 등록된 이벤트 리스너를 제거한다.
-  const cancelEditBtn = document.getElementById("cancelEditBtn");
+  const cancelEditBtn = document.querySelector(".cancelEditBtn");
   if (cancelEditBtn) {
     cancelEditBtn.removeEventListener("click", function () {
       getOriginComment(index);
@@ -214,5 +207,4 @@ function displayCommentResults(index) {
   commentBox.replaceChild(newComment, commentBox.children[index]);
 }
 //삭제 버튼을 눌러 비밀번호 input과 확인, 취소 버튼을 만들때 passwordInput 요소들이 수정, 삭제 버튼을 포함한 buttonsContainer 자리를 대신했기 때문에, 취소 버튼을 눌렀을때 passwordInput이 만들어지기 전의 buttonsContainer이 있던 리뷰의 모습을 다시 불러오기 위해서 리뷰를 다시 만들었다.
-
 displayComments();
