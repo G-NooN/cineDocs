@@ -24,6 +24,8 @@
     </div>
   </body>
   <script>
+    const commentList = JSON.parse(localStorage.getItem("comment-list")) || [];
+
     // 리뷰 저장
     function saveComment() {
       const name = document.querySelector("#user-name");
@@ -54,7 +56,7 @@
         return;
       }
 
-      //글자 수 제한
+      // 글자 수 제한
       const maxLength = 15;
       if (commentText.value.length > maxLength) {
         alert("리뷰는 15자 이하여야 합니다.");
@@ -70,10 +72,8 @@
         commentText: commentText.value,
       };
 
-      const commentsList = JSON.parse(localStorage.getItem("comment-list")) || [];
-
-      commentsList.unshift(comment);
-      localStorage.setItem("comment-list", JSON.stringify(commentsList));
+      commentList.unshift(comment);
+      localStorage.setItem("comment-list", JSON.stringify(commentList));
 
       alert("리뷰가 등록되었습니다.");
 
@@ -89,8 +89,6 @@
     function displayComments() {
       const commentBox = document.querySelector("#comment-list");
       commentBox.innerHTML = "";
-
-      const commentList = JSON.parse(localStorage.getItem("comment-list")) || [];
 
       commentList.forEach((comment, index) => {
         const newComment = document.createElement("div");
@@ -113,8 +111,7 @@
 
     // 리뷰 삭제
     function deleteComment(index) {
-      const commentList = JSON.parse(localStorage.getItem("comment-list")) || [];
-      const comment = commentList[index]; //배열 commentList에서 특정 index에 위치한 요소를 가져와 comment라는 변수에 할당하였다.
+      const commentIndex = commentList[index]; //배열 commentList에서 특정 index에 위치한 요소를 가져와 comment라는 변수에 할당하였다.
 
       const commentBox = document.getElementById("comment-list");
 
@@ -141,12 +138,11 @@
 
     // 삭제 시 비밀번호 확인
     function checkPasswordDelete(index) {
-      const commentList = JSON.parse(localStorage.getItem("comment-list")) || [];
-      const comment = commentList[index];
+      const commentIndex = commentList[index];
       const enteredPassword = document.getElementById("confirmPassword");
 
       // 비밀번호가 일치하는 경우
-      if (enteredPassword.value === comment.password) {
+      if (enteredPassword.value === commentIndex.password) {
         commentList.splice(index, 1); // 해당 인덱스를 가진 리뷰를 1개만 삭제한다. 1이라는 숫자를 넣어주지 않으면 해당 인덱스를 가진 리뷰를 포함해 먼저 작성된 리뷰들이 전부 삭제된다.
         localStorage.removeItem("comment-list");
         localStorage.setItem("comment-list", JSON.stringify(commentList)); // 업데이트된 commentList를 다시 저장한다.
@@ -171,14 +167,12 @@
 
     // 삭제 취소버튼 누를시 실행되는 함수.
     function cancelEdit(index) {
-      const commentList = JSON.parse(localStorage.getItem("comment-list")) || [];
-
       //주어진 index가 유효한 범위에 있는지 확인.
       if (index < 0 || index >= commentList.length) {
         return;
       }
       //주어진 index에 해당하는 댓글 가져오기
-      const comment = commentList[index];
+      const commentIndex = commentList[index];
 
       const commentBox = document.getElementById("comment-list");
 
@@ -197,22 +191,21 @@
     // 삭제 버튼을 누르기 전, 수정, 삭제 버튼이 있는 리뷰를 보여준다.
     function canceledComment(index) {
       const commentBox = document.getElementById("comment-list");
-      const commentList = JSON.parse(localStorage.getItem("comment-list")) || [];
 
       // index가 유효한 범위에 있는지 확인
       if (index < 0 || index >= commentList.length) {
         return;
       }
 
-      const comment = commentList[index];
+      const commentIndex = commentList[index];
 
       const newComment = document.createElement("div");
       newComment.className = "comment-item";
       newComment.innerHTML = `
     <div class="comment-box">
       <div class="comment-data">
-        <p class="comment-name">${comment.name}</p>
-        <p class="comment-contents">${comment.commentText}</p>
+        <p class="comment-name">${commentIndex.name}</p>
+        <p class="comment-contents">${commentIndex.commentText}</p>
       </div>
       <div id="control-btn">
         <button onclick="editComment(${index})" id="editCommentBtn">수정</button>
