@@ -181,7 +181,6 @@ main {
   transition: transform 100ms ease-in;
   line-height: 1.6em;
   background-color: #131212f6;
-
 }
 
 .movie-item:hover {
@@ -282,7 +281,12 @@ main {
   padding-top: 110px;
 }
 
+.movieInfo-details {
+  margin: 5px 0;
+}
+
 .movieInfo-title {
+  margin-bottom: 20px;
   font-size: 35px;
   color: white;
 }
@@ -439,7 +443,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
   margin: 0 15px;
 
   border: 1px solid #777;
