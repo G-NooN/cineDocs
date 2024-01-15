@@ -4,14 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>'영화 제목 (연도)' ─ CinéDocs</title>
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -21,10 +15,7 @@
     <script type="module" src="./src/review.js"></script>
     <script type="module" src="./src/info.js"></script>
     <script type="module" src="./src/main.js"></script>
-    <script
-      src="https://kit.fontawesome.com/5074a2f31d.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/5074a2f31d.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="wrapper-info">
@@ -32,13 +23,13 @@
         <div class="header">
           <div class="left-menu">
             <h1 class="title">CinéDocs</h1>
-            <ul class="sort-list">
+            <!-- <ul class="sort-list">
               <li id="popular">인기 TOP</li>
               <li id="top-rated">평점 TOP</li>
-            </ul>
+            </ul> -->
           </div>
           <div class="right-menu">
-            <form id="search-form" style="display: none">
+            <!-- <form id="search-form" style="display: none">
               <input
                 type="text"
                 id="search-text"
@@ -48,7 +39,7 @@
               <button type="submit" id="search-btn">검색</button>
             </form>
             <span class="material-icons md-36" id="search">search</span>
-            <span id="searchBtnStatus">off</span>
+            <span id="searchBtnStatus">off</span> -->
           </div>
         </div>
       </header>
@@ -69,25 +60,11 @@
               <h1 class="review-commentform-header">리뷰 남기기</h1>
               <form id="comment-form">
                 <div class="user-info">
-                  <input
-                    type="text"
-                    id="user-name"
-                    placeholder="이름"
-                    required
-                  />
-                  <input
-                    type="password"
-                    id="user-password"
-                    placeholder="비밀번호"
-                    required
-                  />
+                  <input type="text" id="user-name" placeholder="이름" required />
+                  <input type="password" id="user-password" placeholder="비밀번호" required />
                 </div>
                 <div class="comment-area">
-                  <textarea
-                    id="comment"
-                    placeholder="리뷰를 입력하세요."
-                    required
-                  ></textarea>
+                  <textarea id="comment" placeholder="리뷰를 입력하세요." required></textarea>
                   <button type="button" id="submit-btn">
                     등록 <i class="fa-solid fa-pen"></i>
                   </button>
@@ -101,12 +78,9 @@
       <!-- 하단 메뉴 -->
       <footer>
         <p class="footer-text-1">
-          주식회사 : 씨네닥스(CinéDocs) │ 대표 : 3조 '각개전투'
-          (조진훈ㆍ양유진ㆍ서혜련)
+          주식회사 : 씨네닥스(CinéDocs) │ 대표 : 3조 '각개전투' (조진훈ㆍ양유진ㆍ서혜련)
         </p>
-        <p class="footer-text-2">
-          Copyright © 2024 by CinéDocs, Inc. All rights reserved.
-        </p>
+        <p class="footer-text-2">Copyright © 2024 by CinéDocs, Inc. All rights reserved.</p>
       </footer>
     </div>
   </body>
