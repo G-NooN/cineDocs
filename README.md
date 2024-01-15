@@ -1,35 +1,45 @@
 ## CineDocs
 
-TMDB API를 활용한 영화 리스트 출력 Project ([결과물 링크](https://g-noon.github.io/cineDocs/))
+[TMDB API](developer.themoviedb.org) 를 활용한 영화 리뷰 사이트 [[CineDocs](https://g-noon.github.io/cineDocs/)]
 
-### 주요 작업
+### 주요 기능
 
-1. fetch를 통한 TMDB API 데이터 GET
+1. 인기 영화 리스트 소개
 
-   - 영화 ID(id)
-   - 제목(title)
-   - 원제(original_title)
-   - 개봉일(release_date)
-   - 평점(vote_average)
-   - 개요(overview)
-   - 포스터 이미지 주소(poster_path)
+   - 카테고리: 인기 TOP / 평점 TOP
+   - 소개 내용 : 포스터, 제목(원제목), 개봉일, 평점, 개요
 
-2. TMDB API 데이터 JSON 가공 및 출력
+2. 영화 상세 정보 소개
 
-   - 제목(title)
-   - 원제(original_title)
-   - 개봉일(release_date)
-   - 평점(vote_average)
-   - 개요(overview)
-   - 포스터 이미지 주소(baseURL + fileSize + poster_path)
+   - 소개 내용 : 포스터, 제목(원제목), 개봉일, 평점, 러닝타임, 장르, 태그라인(Tagline), 개요
 
-3. 영화 클릭 시 영화 제목 & ID 출력(alert)
+3. 리뷰 작성 및 열람
 
-4. 검색 기능
+### 부가 기능
 
-   - 엔터(Enter) 키 또는 [검색] 버튼 클릭 시 작동
-   - 한국어, 원제목(영어 대/소문자 구분 x) 지원
+1. 다국어 검색 지원
 
-5. 카테고리 구분
-   - 인기 영화(popular)
-   - 높은 평점(top rated) (Default)
+   - 한국어, 영어(대/소문자 구분 x)
+
+2. 유효성 검사
+
+   - 입력 값 유무 판단
+
+     - 적용 범위 : 검색창 UI, 리뷰 작성 UI (이름, 비밀번호, 리뷰 내용)
+
+   - 글자 수 판단
+
+     - 적용 범위 : 리뷰 작성 UI - 리뷰 내용(15자 이하)
+
+   - 비밀번호 일치 여부 판단
+     - 적용 범위 : 리뷰 작성 UI - 비밀번호
+
+3. 리뷰 삭제 기능
+
+   - 비밀번호 일쳐 여부 확인 후 삭제 가능
+
+---
+
+Project Member : [Jinhoon-Jo (조진훈)](https://github.com/G-NooN), [Hyeryeon-Seo (서혜련)](https://github.com/Hyeryeon-Seo), [Yujin-Yang (양유진)](https://github.com/kewii33)
+
+Copyright &copy; 2024 by CinéDocs, All rights reserved
