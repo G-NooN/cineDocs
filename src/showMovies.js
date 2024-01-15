@@ -10,7 +10,7 @@ export const generateMovieList = async (category) => {
     <img src="https://image.tmdb.org/t/p/w185${movie.poster_path}" alt="${movie.title}">
     <h2 class="movie-title">${movie.title}</h2>
     <span class="movie-original-title">(${movie.original_title})</span>
-    <p class="movie-item-info"><strong>개봉일</strong> : ${movie.release_date} / <strong>평점</strong> : ${movie.vote_average}</p>
+    <p class="movie-item-info"><strong>개봉일</strong> : ${movie.release_date}<br><strong>평점</strong> : ${movie.vote_average}</p>
     <p>${movie.overview}</p>
   </div>`
     )
@@ -25,17 +25,14 @@ export const generateMovieList = async (category) => {
         const movie_id = event.target.getAttribute("id");
         localStorage.setItem("movie_id", movie_id);
         window.location.href = "./info.html";
-      } else if (
-        event.target.parentElement.getAttribute("class") === "movie-item"
-      ) {
+      } else if (event.target.parentElement.getAttribute("class") === "movie-item") {
         // img, p 태그 누르는 경우
         const movie_id = event.target.parentElement.getAttribute("id");
         localStorage.setItem("movie_id", movie_id);
         window.location.href = "./info.html";
       } else {
         // <h2>태그 안 <span>태그인 movie-title 들을 누르는 경우
-        const movie_id =
-          event.target.parentElement.parentElement.getAttribute("id");
+        const movie_id = event.target.parentElement.parentElement.getAttribute("id");
         localStorage.setItem("movie_id", movie_id);
         window.location.href = "./info.html";
       }
