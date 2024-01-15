@@ -1,8 +1,8 @@
 /* 전체 */
 /* 폰트 지정 */
 :root {
-  font-family: "NanumSquare", "NanumSquareBold", "NanumSquareLight",
-    "NanumSquareAcb", "NanumSquareAcr", "NanumSquareAcl";
+  font-family: "NanumSquare", "NanumSquareBold", "NanumSquareAcb", "NanumSquareAcr",
+    "NanumSquareAcl";
 }
 
 /* 아이콘 */
@@ -61,6 +61,7 @@ textarea,
 /* 상단 메뉴 */
 header {
   height: 30px;
+
   background-color: #9a161f;
   color: white;
   padding: 30px 100px;
@@ -110,21 +111,21 @@ main {
 /* 검색 form */
 #search-form {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   margin-right: 20px;
 }
 /* 입력 창 */
 #search-text {
   padding: 0 10px;
-  margin: 10px 0;
+  margin: 0 5px;
   width: 20vw;
-  height: 40px;
+  height: 35px;
   font-size: 17px;
   background-color: #f4efea;
 }
 
 #search-btn {
-  margin-left: 20px;
+  margin: 0 5px;
   height: 40px;
   background-color: #f4efea;
   border: 1px solid #f4efea;
@@ -149,6 +150,16 @@ main {
   min-height: 2200px;
 }
 
+#searchBtnStatus {
+  margin-left: 3px;
+}
+
+/* 전체 배경 */
+.wrapper {
+  background-color: black;
+  color: #f4efea;
+}
+
 /* 영화 리스트 */
 #movie-list {
   display: grid;
@@ -170,6 +181,7 @@ main {
   transition: transform 100ms ease-in;
   line-height: 1.6em;
   background-color: #131212f6;
+
 }
 
 .movie-item:hover {
@@ -231,6 +243,7 @@ main {
   어쩔수없이 몇 영화에서 창크기따라 이미지사이즈는 더 작아질 수 있어도 우선 최소가로길이를 줌 */
   min-width: 1519px;
   height: 650px; /* 100%로 쓰면 높이가  p태그에맞춰서 조정됨 */
+
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
@@ -254,8 +267,8 @@ main {
   display: flex;
 }
 
+/* 상세 페이지 영화 카드 이미지*/
 .movieInfo-box img {
-  /* 상세페이지 영화카드이미지 */
   width: 330px;
   height: 480px;
   margin: 80px;
@@ -269,18 +282,9 @@ main {
   padding-top: 110px;
 }
 
-.movieInfo-Ktitle,
-.movieInfo-Otitle {
-  font-family: "NanumSquare", "NanumSquareBold";
-}
-
 .movieInfo-title {
   font-size: 35px;
   color: white;
-}
-
-.movieInfo-details {
-  margin-top: 20px;
 }
 
 .movieInfo-vote,
@@ -298,6 +302,7 @@ main {
   font-style: italic;
 }
 
+/* 상세 페이지-영화 개요 */
 .movieInfo-overview {
   color: white;
   font-size: 19px;
@@ -316,9 +321,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 100px;
-  margin-left: 10%;
-  margin-bottom: 50px;
+  margin: 100px 0 50px 10%;
 }
 
 .review-header {
@@ -373,6 +376,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 #user-name,
@@ -435,10 +439,11 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* margin: 100 30 10px; */
-  margin-top: 5px;
+  
+  margin: 0 15px;
 
-  /* border: 1px solid #9a161f; */
+  border: 1px solid #777;
+  border-radius: 5px;
   background-color: black;
 }
 
@@ -451,10 +456,13 @@ main {
   font-size: 17px;
   margin-bottom: 15px;
   margin-left: 10px;
+  padding: 0 0 10px 10px;
+  border-bottom: 1px solid #777;
 }
 
 .comment-contents {
   margin: 10px;
+  padding: 5px 0;
   font-size: 17px;
 }
 
@@ -476,7 +484,7 @@ button,
   padding: 5px;
 }
 
-#deleteCommentBtn {
+.deleteCommentBtn {
   margin-left: 5px;
   background-color: #9a161f;
   color: #fff;

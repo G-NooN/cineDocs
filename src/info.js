@@ -22,6 +22,11 @@ const generateMovieInfo = async (movie_id) => {
     movieTagline = movieK.tagline;
   }
 
+  // movieTagline 한글 버전이 없는 경우 (영문버전은 존재) -> 영문버전 데이터에서 가져오기 (시도중)
+  /* if (movie.tagline === "") {
+    const movieTagline = 
+  } */
+
   // body 태그 안 영화 상세정보 페이지 메인 구성 - (포스터이미지, 영화 제목, 원제, 개요)
   const movieInfo = document.querySelector(".movieInfo-box");
   /*  movie.status 추가 고려해보기 */
@@ -32,15 +37,15 @@ const generateMovieInfo = async (movie_id) => {
       />
       <div class="movieInfo-detail-box">
         <h1 class="movieInfo-title">
-        ${movieK.title} (${movieK.original_title})
+          ${movieK.title} (${movieK.original_title})
         </h1>
         <p class="movieInfo-details">
-        <span class="movieInfo-date">ㆍ 개봉일│${movieK.release_date}</span>
-        <span class="movieInfo-vote">ㆍ 평점│${movieK.vote_average}</span>
-        <span class="movieInfo-runtime">ㆍ 러닝타임│${movieK.runtime}분</span>
+          <span class="movieInfo-date">ㆍ 개봉일│${movieK.release_date}</span>
+          <span class="movieInfo-vote">ㆍ 평점│${movieK.vote_average}</span>
+          <span class="movieInfo-runtime">ㆍ 러닝타임│${movieK.runtime}분</span>
         </p>
         <p class="movieInfo-details">
-        <span class="movieInfo-genre">ㆍ 장르│${genreNamesStr}</span>
+          <span class="movieInfo-genre">ㆍ 장르│${genreNamesStr}</span>
         </p>
         <pre class="movieInfo-tagline">
         <span class="material-symbols-outlined quoteSymbol">
@@ -50,7 +55,7 @@ const generateMovieInfo = async (movie_id) => {
         </span>
         </pre>
         <p class="movieInfo-overview">
-        ${movieK.overview}
+          ${movieK.overview}
         </p>
     </div>`;
 
@@ -94,3 +99,13 @@ async function fetchMovieDetailsData(movie_id) {
 
   return movie_data; // 배열을 리턴
 }
+
+// 상단 메뉴 href
+const popular = document.querySelector("#popular");
+popular.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
+const topRated = document.querySelector("#top-rated");
+topRated.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
