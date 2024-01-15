@@ -111,22 +111,29 @@ main {
 #search-form {
   display: flex;
   align-items: baseline;
+  margin-right: 20px;
 }
 /* 입력 창 */
 #search-text {
   padding: 0 10px;
   margin: 10px 0;
-  width: 15vw;
+  width: 20vw;
   height: 40px;
+  font-size: 17px;
+  background-color: #f4efea;
 }
 
 #search-btn {
-  margin: 10px;
+  margin-left: 20px;
   height: 40px;
+  background-color: #f4efea;
+  border: 1px solid #f4efea;
 }
 
 #searchBtnStatus {
   margin-left: 3px;
+  font-size: 17px;
+  font-weight: bold;
 }
 
 /* 전체 배경 */

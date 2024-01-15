@@ -16,7 +16,7 @@ const searchInput = document.querySelector("#search-text");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   if (searchInput.value.length === 0) {
-    alert("값을 입력해주세요.");
+    alert("제목을 입력해주세요.");
     return;
   } else {
     showSearchResult(searchInput.value);
