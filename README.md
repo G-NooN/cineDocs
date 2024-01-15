@@ -1,12 +1,12 @@
 ## CineDocs
 
-[TMDB API](developer.themoviedb.org) 를 활용한 영화 리뷰 사이트 [[CineDocs](https://g-noon.github.io/cineDocs/)]
+[TMDB API](https://developer.themoviedb.org) 를 활용한 영화 리뷰 사이트 [[CineDocs](https://g-noon.github.io/cineDocs/)]
 
 ### 주요 기능
 
 1. 인기 영화 리스트 소개
 
-   - 카테고리: 인기 TOP / 평점 TOP
+   - 카테고리 : 인기 TOP / 평점 TOP
    - 소개 내용 : 포스터, 제목(원제목), 개봉일, 평점, 개요
 
 2. 영화 상세 정보 소개
@@ -29,7 +29,7 @@
 
    - 글자 수 판단
 
-     - 적용 범위 : 리뷰 작성 UI - 리뷰 내용(15자 이하)
+     - 적용 범위 : 리뷰 작성 UI - 리뷰 내용 (15자 이하)
 
    - 비밀번호 일치 여부 판단
      - 적용 범위 : 리뷰 작성 UI - 비밀번호
