@@ -13,7 +13,7 @@ const generateMovieInfo = async (movie_id) => {
   });
   const genreNamesStr = genreNames.join(" / "); // 배열의 원소들(장르명)을 연결해 하나의 문자열로 만들기
 
-  // * movieTagline 한글 버전이 없는 경우 (영문버전은 존재) -> 영문버전 데이터에서 가져오기 (시도중)
+  // * movieTagline 한글 버전이 없는 경우 (영문버전은 존재) -> 영문버전 데이터에서 가져오기
   let movieTagline = "";
   if (movieK.tagline === "") {
     // 한글 버전 없을 시
@@ -22,10 +22,14 @@ const generateMovieInfo = async (movie_id) => {
     movieTagline = movieK.tagline;
   }
 
-  // movieTagline 한글 버전이 없는 경우 (영문버전은 존재) -> 영문버전 데이터에서 가져오기 (시도중)
-  /* if (movie.tagline === "") {
-    const movieTagline = 
-  } */
+  // overview 한글 버전이 없는 경우 (영문버전은 존재) -> 영문버전 데이터에서 가져오기
+  let movieOverview = "";
+  if (movieK.overview === "") {
+    // 한글 버전 없을 시
+    movieOverview = movieE.overview; // 영어 버전에서 가져오기
+  } else {
+    movieOverview = movieK.overview;
+  }
 
   // body 태그 안 영화 상세정보 페이지 메인 구성 - (포스터이미지, 영화 제목, 원제, 개요)
   const movieInfo = document.querySelector(".movieInfo-box");
@@ -55,7 +59,7 @@ const generateMovieInfo = async (movie_id) => {
         </span>
         </pre>
         <p class="movieInfo-overview">
-          ${movieK.overview}
+          ${movieOverview}
         </p>
     </div>`;
 
