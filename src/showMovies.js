@@ -8,72 +8,38 @@ export const generateMovieList = async (category) => {
       (movie) => `
   <div class="movie-item" id="${movie.id}">
     <img src="https://image.tmdb.org/t/p/w185${movie.poster_path}" alt="${movie.title}">
-    <h2><span class="movie-title">${movie.title}</span> (<span class="movie-original-title">${movie.original_title}</span>)</h2>
-    <p><strong>개봉일</strong> : ${movie.release_date} / <strong>평점</strong> : ${movie.vote_average}</p>
+    <h2 class="movie-title">${movie.title}</h2>
+    <span class="movie-original-title">(${movie.original_title})</span>
+    <p class="movie-item-info"><strong>개봉일</strong> : ${movie.release_date}<br><strong>평점</strong> : ${movie.vote_average}</p>
     <p>${movie.overview}</p>
   </div>`
     )
     .join("");
 
-  //   const movieItem = document.querySelectorAll(".movie-item");
-  //   movieItem.forEach((movieitem) =>
-  //     movieitem.addEventListener("click", () => {
-  //         movies.map(
-  //         (movie) => localStorage.setItem("movie_id", ${movie.id});
-  //         )
-
-  // );
-
-  // 영화 클릭 시 info.html(상세페이지)로 넘어가기, 영g화id 데이터 전달하기
-  // 시도 중
+  // 영화 클릭 시 info.html(상세페이지)로 넘어가기, 영화id 데이터 전달하기
   const movieItem = document.querySelectorAll(".movie-item");
   movieItem.forEach((movie) =>
     movie.addEventListener("click", (event) => {
-      if (event.target.getAttribute("class") == "movie-item") {
+      if (event.target.getAttribute("class") === "movie-item") {
         // 그냥 다른 태그 아닌 div 박스 빈공간 누르는 경우
         const movie_id = event.target.getAttribute("id");
-        localStorage.setItem("movie_id", movie_id); // 잘 저장됨
-        window.location.href = "../info.html"; // 잘 넘어감
-      } else if (
-        event.target.parentElement.getAttribute("class") == "movie-item"
-      ) {
+        localStorage.setItem("movie_id", movie_id);
+        window.location.href = "./info.html";
+      } else if (event.target.parentElement.getAttribute("class") === "movie-item") {
         // img, p 태그 누르는 경우
         const movie_id = event.target.parentElement.getAttribute("id");
         localStorage.setItem("movie_id", movie_id);
-        window.location.href = "../info.html";
+        window.location.href = "./info.html";
       } else {
         // <h2>태그 안 <span>태그인 movie-title 들을 누르는 경우
-        const movie_id =
-          event.target.parentElement.parentElement.getAttribute("id");
+        const movie_id = event.target.parentElement.parentElement.getAttribute("id");
         localStorage.setItem("movie_id", movie_id);
-        window.location.href = "../info.html";
+        window.location.href = "./info.html";
       }
       // console.log(event); // event 객체내용 확인 가능 (콘솔로만 가능)
       // PointerEvent {key:value}로 이뤄진 객체, target 이라는 key - 눌린 태그 (img,p등) 혹은 div 가 있음
     })
   );
-
-  //
-
-  // $movieItem.forEach((movie) => movie.addEventListener("click", showMovieID));
-  //   // 영화 클릭 시 제목 & ID alert 출력
-  //   function showMovieID({ target }) {
-  //     if (target.parentNode.matches(".movie-item")) {
-  //       let movieTitle = target.parentNode.firstElementChild.nextElementSibling.innerText;
-  //       alert(`[제목] : ${movieTitle}
-  // [Movie ID] : ${target.parentNode.id}`);
-  //     } else if (target.parentNode.matches("h2")) {
-  //       // h2 title
-  //       let movieTitle = target.parentNode.innerText;
-  //       alert(`[제목] : ${movieTitle}
-  // [Movie ID] : ${target.parentNode.parentNode.id}`);
-  //     } else {
-  //       // p overview
-  //       let movieTitle = target.parentNode.previousElementSibling.innerText;
-  //       alert(`[제목] : ${movieTitle}
-  // [Movie ID] : ${target.parentNode.parentNode.id}`);
-  //     }
-  //   }
 };
 // TMDB API 데이터 가져오기
 async function fetchMovieData(category) {

@@ -4,97 +4,84 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>'영화 제목 (연도)' ─ CinéDocs</title>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
+    <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/main.css" />
-    <link rel="stylesheet" href="./style/review.css" />
+    <script type="module" src="./src/review.js"></script>
     <script type="module" src="./src/info.js"></script>
     <script type="module" src="./src/main.js"></script>
+    <script src="https://kit.fontawesome.com/5074a2f31d.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper-info">
       <header>
-        <div class="left-menu">
-          <ul class="sort-list">
-            <li id="popular">Popular</li>
-            <li>/</li>
-            <li id="top-rated">Top Rated</li>
-          </ul>
-        </div>
-        <div class="center-menu">
-          <!-- 페이지 로고 및 제목-->
-          <!-- 홈 페이지 링크걸기-->
-          <h1 class="title">CinéDocs</h1>
-        </div>
-        <div class="right-menu">
-          <form id="search-form">
-            <input
-              type="text"
-              id="search-text"
-              name="searchValue"
-              placeholder="Search"
-              autofocus
-            />
-            <button type="submit" id="search-btn">검색</button>
-          </form>
+        <div class="header">
+          <div class="left-menu">
+            <h1 class="title">CinéDocs</h1>
+            <!-- <ul class="sort-list">
+              <li id="popular">인기 TOP</li>
+              <li id="top-rated">평점 TOP</li>
+            </ul> -->
+          </div>
+          <div class="right-menu">
+            <!-- <form id="search-form" style="display: none">
+              <input
+                type="text"
+                id="search-text"
+                name="searchValue"
+                placeholder="Search"
+              />
+              <button type="submit" id="search-btn">검색</button>
+            </form>
+            <span class="material-icons md-36" id="search">search</span>
+            <span id="searchBtnStatus">off</span> -->
+          </div>
         </div>
       </header>
       <main>
-        <section>
+        <section class="movieInfo-section">
           <!-- 영화 정보 section -->
           <div class="movieInfo-main">
             <!--이 div 전체에 backdrop path 이미지로 뒷배경-->
-            <div class="movieInfo-box">
-              <!-- <img
-                src="https://image.tmdb.org/t/p/original/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg"
-                alt="The Hunger Games: The Ballad of Songbirds & Snakes"
-              />
-              <div class="movieInfo-detail-box">
-                <h1 class="movieInfo-Ktitle">
-                  헝거게임: 노래하는 새와 뱀의 발라드
-                </h1>
-                <span class="movieInfo-Otitle">
-                  (The Hunger Games: The Ballad of Songbirds & Snakes)
-                </span>
-                <p>
-                  반란의 불씨를 잠재우기 위해 시작된 잔인한 서바이벌 헝거게임.
-                  헝거게임 10회를 맞아 ‘멘토제’가 도입되고 ‘스노우’는 12구역의
-                  소녀 ‘루시 그레이’의 멘토가 된다. 그는 몰락한 가문의 영광을
-                  되찾기 위해 ‘루시 그레이’를 헝거게임에서 우승 시키려 수단과
-                  방법을 가리지 않는데…
-                </p>
-              </div> -->
-            </div>
+            <div class="movieInfo-box"></div>
           </div>
           <!-- 영화 리뷰 section -->
           <div class="review-box">
-            <form id="comment-form">
-              <div class="user-info">
-                <input type="text" id="username" placeholder="이름" required />
-                <input
-                  type="password"
-                  id="user-password"
-                  placeholder="비밀번호"
-                  required
-                />
-              </div>
-              <div class="comment-area">
-                <textarea
-                  id="comment"
-                  placeholder="리뷰를 입력하세요."
-                  required
-                ></textarea>
-                <button type="button" id="submit-btn" onclick="saveComment()">
-                  등록
-                </button>
-              </div>
-            </form>
-            <div id="comment-list"></div>
+            <div class="review-header">
+              <i class="fa-solid fa-comments"></i>
+              <h1 class="review-title">Review</h1>
+            </div>
+            <div class="review-comment-formlist">
+              <h1 class="review-commentform-header">리뷰 남기기</h1>
+              <form id="comment-form">
+                <div class="user-info">
+                  <input type="text" id="user-name" placeholder="이름" required />
+                  <input type="password" id="user-password" placeholder="비밀번호" required />
+                </div>
+                <div class="comment-area">
+                  <textarea id="comment" placeholder="리뷰를 입력하세요." required></textarea>
+                  <button type="button" id="submit-btn">
+                    등록 <i class="fa-solid fa-pen"></i>
+                  </button>
+                </div>
+              </form>
+              <div id="comment-list"></div>
+            </div>
           </div>
         </section>
       </main>
+      <!-- 하단 메뉴 -->
+      <footer>
+        <p class="footer-text-1">
+          주식회사 : 씨네닥스(CinéDocs) │ 대표 : 3조 '각개전투' (조진훈ㆍ양유진ㆍ서혜련)
+        </p>
+        <p class="footer-text-2">Copyright © 2024 by CinéDocs, Inc. All rights reserved.</p>
+      </footer>
     </div>
   </body>
 </html>

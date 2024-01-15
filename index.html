@@ -8,44 +8,58 @@
       href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/main.css" />
     <script type="module" src="./src/main.js"></script>
   </head>
   <body>
-    <!-- 상단 메뉴 -->
-    <header>
-      <div class="left-menu">
-        <ul class="sort-list">
-          <li id="popular">Popular</li>
-          <li>/</li>
-          <li id="top-rated">Top Rated</li>
-        </ul>
-      </div>
-      <div class="center-menu">
-        <!-- 페이지 로고 및 제목-->
-        <h1 class="title">CinéDocs</h1>
-      </div>
-      <div class="right-menu">
-        <form id="search-form">
-          <input
-            type="text"
-            id="search-text"
-            name="searchValue"
-            placeholder="Search"
-            autofocus
-          />
-          <button type="submit" id="search-btn">검색</button>
-        </form>
-      </div>
-    </header>
+    <div class="wrapper-index">
+      <!-- 상단 메뉴 -->
+      <header>
+        <div class="header">
+          <div class="left-menu">
+            <h1 class="title">CinéDocs</h1>
+            <ul class="sort-list">
+              <li id="popular">인기 TOP</li>
+              <li id="top-rated">평점 TOP</li>
+            </ul>
+          </div>
+          <div class="right-menu">
+            <form id="search-form" style="display: none">
+              <input
+                type="text"
+                id="search-text"
+                name="searchValue"
+                placeholder="제목을 검색해보세요"
+              />
+              <button type="submit" id="search-btn">검색</button>
+            </form>
+            <span class="material-icons md-36" id="search">search</span>
+            <span id="searchBtnStatus">off</span>
+          </div>
+        </div>
+      </header>
 
-    <!-- 메인 화면 -->
-    <main>
-      <!-- 영화 정보 -->
-      <div id="movie-list"></div>
-    </main>
+      <!-- 메인 화면 -->
+      <main>
+        <!-- 영화 정보 -->
+        <div id="movie-list"></div>
+      </main>
 
-    <!-- 하단 메뉴 -->
-    <footer></footer>
+      <!-- 하단 메뉴 -->
+      <footer>
+        <p class="footer-text-1">
+          주식회사 : 씨네닥스(CinéDocs) │ 대표 : 3조 '각개전투'
+          (조진훈,양유진,서혜련)
+        </p>
+        <p class="footer-text-2">
+          Copyright © 2024 by CinéDocs, Inc. All rights reserved.
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
