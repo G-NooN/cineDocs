@@ -13,4 +13,17 @@ export const showSearchResult = (searchKeyword) => {
       ? (item.style.display = "block")
       : (item.style.display = "none");
   });
+  if (areAllElementsHidden(movieItems)) {
+    alert("검색 결과가 존재하지 않습니다.");
+    return;
+  }
 };
+
+function areAllElementsHidden(nodeList) {
+  for (let i = 0; i < nodeList.length; i++) {
+    if (window.getComputedStyle(nodeList[i]).display !== "none") {
+      return false;
+    }
+  }
+  return true;
+}
