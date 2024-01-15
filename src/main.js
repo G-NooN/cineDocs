@@ -20,6 +20,7 @@ form.addEventListener("submit", (event) => {
     return;
   } else {
     showSearchResult(searchInput.value);
+    searchInput.value = "";
   }
 });
 
