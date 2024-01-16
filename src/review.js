@@ -129,8 +129,7 @@ function deleteComment(index) {
   if (makePasswordInput) {
     commentBox.replaceChild(passwordInput, makePasswordInput);
   } else {
-    const buttonsContainer =
-      commentBox.children[index].querySelector("#control-btn");
+    const buttonsContainer = commentBox.children[index].querySelector("#control-btn");
     buttonsContainer.replaceWith(passwordInput);
   }
 } // 비밀번호 입력칸이 다른 리뷰 칸에 생성되는 일이 있어서, passwordInput에 인덱스값을 붙여 특정해주고 수정, 삭제 버튼이 있던 위치에 비밀번호 입력칸과 확인, 취소 버튼이 오게 하였다.
@@ -158,6 +157,7 @@ function checkPasswordDelete(index) {
   } else {
     // 비밀번호가 틀린 경우
     alert("비밀번호가 틀렸습니다.");
+    enteredPassword.value = "";
     setTimeout(function () {
       enteredPassword.focus();
     });
